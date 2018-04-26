@@ -258,7 +258,7 @@ Runs	| 0.876262
 Our test is based on four platforms, including server, PC, Tianhe-2, and embedded system. The parameters of these platforms are presented in table 2-1.  
 **Table 2-1 CPU Platforms**  
 
-|  Platforms  | #1 Server | #2 PC | #3 Tianhe-2 | #4 Embedded System|  
+|  Platforms  | #1 Server | #2 PC | #3 ServerX | #4 Embedded System|  
 | -------- | -------- | -------------- | --------- | ---------- |  
 | Processor | E5-2609 | Core i5 7500 |E5-2692 v2 | TX1 |  
 | Micro-architecture | Haswell | Kaby Lake | Ivy Bridge |A57|  
@@ -281,7 +281,7 @@ Performance of 16 one-way functions on platform 1,2 and 3 are described in table
 
 **Table 2-2 Throughput of One-Way Function Family(Mps)**  
 
-| t | Type | Function Name | Server | PC | Tianhe-2|  
+| t | Type | Function Name | Server | PC | ServerX|  
 | -- | ------- |------------|-----|-----|----|    
 | 0 | SHA-3 | SHA3-256 | 1.01 | 1.28 | 1.02 |  
 | 1 | SHA-1 | SHA-1 | 2.15 | 4.51 | 3.19 |   
