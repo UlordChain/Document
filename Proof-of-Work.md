@@ -367,7 +367,7 @@ Table 2-6 and Figure 2-2 show the performance on the GTX 1080 and GTX Titan X.
 **Figure 2-2 Throughput of One-way Function H on Different GPUs(hashes per second)**  
 
 In Figure 2-2, although the number of cores of 1080 is significantly less than Titan X, its performance is significantly improved. This may be because the former adopts more sophisticated architecture Pascal, which is the previous Maxwell architecture. The two-generation architecture has a significant difference to this one-way function algorithm:  
-On 1080, performance continues to increase as the number of simultaneous one-way functions is increased. However, since only 8GB of memory is available, the maximum number of one-way functions that can be calculated simultaneously is only 4K (4GB of memory is used).
+On 1080, performance continues to increase as the number of simultaneous one-way functions is increased. However, since only 8GB of memory is available, the maximum number of one-way functions that can be calculated simultaneously is only 4K (4GB of memory is used).  
 On Titan X, when the number of simultaneous calculations of a one-way function increases by more than 2K, the performance is severely degraded, which may be related to its internal design approach to memory access.  
 Compared with Figure 2-1, the performance of 1080 is basically equivalent to that of a general server.  
 
