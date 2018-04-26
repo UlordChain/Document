@@ -35,13 +35,13 @@ i    32-bit unsigned integer
 1. a[0:31]=h0(x);   
 2. loop, i from 0 to |M|/32-1 	//if |M|=1M, the loop count is 215  
 2.1  if i mod K ≠0      	//K is a configurable parameter to adjust speed  
-2.1.1   	b[0 : 7] = rand0()xor(rand0()<<16);   
-2.1.2   	b[8 :15] = rand1()xor(rand1()<<16);   
-2.1.3   	b[16:23]= rand2()xor(rand2()<<16);   
-2.1.4   	b[24:31]= rand3()xor(rand3()<<16);  
+2.1.1   	b[0 : 7] = rand0()*xor*(rand0()<<16);   
+2.1.2   	b[8 :15] = rand1()*xor*(rand1()<<16);   
+2.1.3   	b[16:23]= rand2()*xor*(rand2()<<16);   
+2.1.4   	b[24:31]= rand3()*xor*(rand3()<<16);  
 2.1.5  	b[0 : 31]= RRS(b[0:31], reduce_bit(i,8));  
 2.1.6  	M[32*i:32*i+31]=b[0:31];  
-2.1.7   	a[0:31]= a[0:31] xor b[0: 31];  
+2.1.7   	a[0:31]= a[0:31] *xor* b[0: 31];  
 2.2  else  
 2.2.1   	t=reduce_bit(a[0:31],4);  
 2.2.2   	a[0:31]=ht(RRS(a[0:31], reduce_bit(i,8)));  
@@ -78,12 +78,12 @@ b: 64-byte array; a: 32-byte array
 2.2.1    base=(rand()+r) mod 264; offset= (reduce_bit(r,8)<<8)+1;   //random memory address  
 2.2.2    addr1=(base-offset) mod |M|; addr2=(base+offset) mod |M|  
 2.2.3    t1=M[addr1];		t2=M[addr2];  	s=a[j mod 32];  
-2.2.4    M[addr1]= t2 xor s;  	M[addr2]= t1 xor s; 	b[j mod 64]=t1 xor t2;		//Modify M 
+2.2.4    M[addr1]= t2 *xor* s;  	M[addr2]= t1 *xor* s; 	b[j mod 64]=t1 *xor* t2;		//Modify M 
 2.2.5    r=(r+s+t1+t2) mod 264;  					
 2.3   t=reduce_bit(r,4);  
 2.4   a[0:31]=reduce_bit(b[0:63], 256);  
 2.5   a[0:31]=ht(RRS(a[0:31], reduce_bit(i+r,8)));  
-2.6   c[0:31]=c[0:31] xor a[0:31]  
+2.6   c[0:31]=c[0:31] *xor* a[0:31]  
 
 **Comment on Alg-2**  
 The first step of the algorithm obtains the hash result of last block of M, which requires the completion of Alg-1 before this algorithm can be executed, ensuring the sequence of the two algorithms.  
@@ -106,7 +106,7 @@ D   To adjust the number of calculations for a one-way function.
 2.1   t= reduce_bit(y[0:31],4);  
 2.2   d=reduce_bit(y[0:31], D)+1;   
 2.3   Loop, j from 0 to d             //At least once  	  					
-2.3.1    y[0:31]=y[0:31] xor M[32*i, 32*i+31];  
+2.3.1    y[0:31]=y[0:31] *xor* M[32*i, 32*i+31];  
 2.3.2    i++;  
 2.3.3    if i =|M|/32-1 then  
 2.3.3.1     y[0:31]=h0(RRS(y[0:31], reduce_bit(i+t,8))); return  
@@ -249,4 +249,131 @@ Using NIST random test tool ，test Y’s frequency and runs. Results are presen
 Test Item | P-value
  --- | ------
 Frequency | 0.859141
-Runs	| 0.876262
+Runs	| 0.876262  
+
+
+## 2. Performance of One-way Function H   
+### 2.1 Performance on CPU  
+**CPU Platforms**  
+Our test is based on four platforms, including server, PC, Tianhe-2, and embedded system. The parameters of these platforms are presented in table 2-1.  
+**Table 2-1 CPU Platforms**  
+
+|  Platforms  | #1 Server | #2 PC | #3 Tianhe-2 | #4 Embedded System|  
+| -------- | -------- | -------------- | --------- | ---------- |  
+| Processor | E5-2609 | Core i5 7500 |E5-2692 v2 | TX1 |  
+| Micro-architecture | Haswell | Kaby Lake | Ivy Bridge |A57|  
+| SIMD | SSE 2/3/4.1/4.2AVX/AVX2 |SSE 2/3/4.1/4.2AVX/AVX2|SSE 2/3/4.1/4.2AVX |NEON |  
+| Cores | 2*6 | 4 | 2*12 | 4 |  
+| Hyper Thread | Nonsupport | Nonsupport |Support |Nonsupport |  
+| Frequency | 1.9 GHz | 3.4 GHz | 2.20GHz |2.1GHZ|  
+| Memory size | 64 GB | 8 GB |64 GB | 2GB |  
+| L1 Cache Size/per core | 32 KB+32 KB | 32 KB+32 KB | 32 KB+32 KB |32 KB+32 KB|  
+| L2 Cache/per core | 256 KB | 256 KB |256 KB | 2MB（shared） |  
+| L3 Cache | 15MB | 6MB | 30MB | |  
+| Operating System | CentOS 6.6（64 bits） | Windows 10（64 bits）|Red Hat Enterprise 6.2 | Ubuntu 14.04 LTS |  
+| Compiler | gcc7 (GCC) 7.1.0 |Microsoft VS2015 C/C++ 19.00.24215.1 | icc 14.0.2 | |  
+
+
+**Performance of One-Way Function Family**  
+Performance of 16 one-way functions on platform 1,2 and 3 are described in table 2-2.  
+
+---
+
+**Table 2-2 Throughput of One-Way Function Family(Mps)**  
+
+| t | Type | Function Name | Server | PC | Tianhe-2|  
+| -- | ------- |------------|-----|-----|----|    
+| 0 | SHA-3 | SHA3-256 | 1.01 | 1.28 | 1.02 |  
+| 1 | SHA-1 | SHA-1 | 2.15 | 4.51 | 3.19 |   
+| 2 | SHA-2 | SHA-256 | 2.81 | 5.26 | 3.72 | 
+| 3 | SHA-2 | SHA-512 | 1.34 | 3.68 | 2.54 |  
+| 4 | Whirlpool | Whirlpool |	0.92 | 2.43 | 1.50 |   
+| 5 | RIPEMD | RIPEMD-160 | 0.95 | 1.51 | 1.46 |  
+| 6 | BLAKE2 | BLAKE2s(256bits) | 1.66 | 2.42 | 2.48 |  
+| 7 | AES	| AES(128bits) | 0.92 | 1.79 |  1.28 | 
+| 8 | DES | DES | 0.66 | 1.25 | 0.91 |   
+| 9 | RC4 | RC4 | 0.72 | 1.42 | 1.06 |  
+| 10 | Camellia | Camellia(128bits) | 1.07 | 2.04 | 1.52 |   
+| 11 | CRC | CRC32 | 2.16 | 3.98 | 2.94 |   
+| 12 | HMAC | HMAC(MD5) | 0.47 | 0.66 | 0.67 |    
+| 13 | GOST | GOST R 34.11-94 | 0.37 | 0.73 | 0.50 |   
+| 14 | HAVAL | HAVAL-256/5 | 1.67 | 2.43 | 1.81 |  
+| 15 | Skein | Skein-512(256bits）| 2.17 | 4.47 | 3.17 |  
+
+**In this table, the function with highest throughput is SHA256, the lowest is GOST or HMAC. The highest throughput is 7.5~8.0 times as the lowest one.**  
+
+**Execution Time Distribution**  
+With one core on server platform, the execution time distribution of H is described as table 2-3.  
+**Table 2-3 Execution Time Distribution of H**  
+
+|     | Alg-1 Initialize Memory|Alg-2 Modify Memory (Step 2.2)| Alg-2 Calling One-way Functions (Step 2.5)| Alg-3 Generate Result |  
+|--|------|------|------|------|  
+| Distribution | 36% | 53% | 1% | 10% |  
+
+**The execution time of function H concentrates on modification memory in alg-2.**
+
+**Performance of One-way function H**    
+Table 2-4 and figure 2-1 show the performance of one-way function H on different performance. The thread number with the highest performance exactly is equal to the number of the cores.     
+**Table 2-4 Throughput of One-way Function H on Different Platforms (hashes per second)**  
+
+| Number of Threads | 1 | 4 | 8 | 12 | 16 | 24 | 32 | 48 | 64 |  
+|----|---|---|---|---|---|---|---|----|---|    
+| Server | 80 | 315 | 628 | 938 | 837 | 836 | 867 | 858 | 763 |  
+| PC | 168 | 641 | 634 | 631 | 633 | 629 | 627 | 625 | 625 |  
+| Tianhe-2 | 115 | 443 | 797 | 1186 | 1578 | 2337 | 2208 | 2177 | 2171 |  
+| Embedded System | 73 | 138 | 133 | 133 | 133| 133 | 133 |	132 | 133 |  
+
+![image4](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2-1.png?raw=true)  
+**Figure 2-1 Throughput of One-way Function H on Different Platforms(hashes per second)**  
+
+
+### 2.2 Performance on GPUs  
+Our test is based on Mainstream consumer-level graphics: GTX 1080, GTX Titan X. Their specification is shown in table 2-5.  
+
+**Table 2-5 Specification of GPUs**  
+
+| GPU |GTX 1080|GTX Titan X|  
+|---|---|----|  
+|Micro-architecture|Pascal|Maxwell|  
+|Number of Cores| 2560 | 3072 |  
+| Frequency| 1.6GHZ | 1.0GHZ |  
+| Memory Size | 8GB | 12GB |  
+|Memory Width | 256-bits | 384-bits |  
+|Memory Bandwidth| 320GBps | 336GBps |  
+|Power Consumption | 180W | 250W |  
+
+
+#### 1. Constraint on Number of Simultaneous Threads  
+Because of the limitation of memory size on GPU, only 4 Kilo one-way functions can be executed simultaneously, occupying 4GB memory.
+There is no obvious parallelism within the three main algorithms in function H, so it is difficult to execute a one-way function H at the same time by multiple threads, and only one one-way function can be executed by one thread.  
+At this point, there are a total of 4K threads on one GPU. This will lead to the first constraint: the number of threads that can be executed in parallel is too small and overall parallelism is limited.  
+
+####  2. Constraint on SMT  
+The GPUs use SIMT (Single Instruction Multithreading) method, where one Warp (=32) threads execute the same instruction. In the case of a branch instruction, if the execution paths between the threads are different, all the paths of each thread need to be executed serially, respectively, until all threads in one Warp execute to the same path.  
+In our one-way function H, it will choose one from 16 one-way functions randomly. And the number of cycles varies between 1 and 2D-1 depending on the input data in step 2.3 of Alg-3. This will cause the threads on the GPU to execute different paths so that different threads can only execute serially, thereby suppressing the parallelism of the GPU.  
+
+#### 3. Constraint on Memory Access   
+In Alg-2, the access unit to the working memory M is byte, and the address is highly random. Since the GPU on-chip cache has a very limited capacity, the memory access in Alg-2 basically needs to be read from the video memory. Although the memory width of GPU is up to 256 bits (or even 384 bits), it is only valid for ONE byte, which makes the GPU memory access bandwidth only 3% utilization.  
+Due to the large number of reliance on memory accesses, the latency of memory access instructions can be as long as several hundred cycles, and because of the small number of threads, it is difficult to cover the long latency of these memory access instructions.  
+
+**Performance**  
+Table 2-6 and Figure 2-2 show the performance on the GTX 1080 and GTX Titan X.  
+
+**Table 2-6 Throughput of One-way Function H on Different GPUs**  
+(hashes per second，Single card, thread set to 4096)  
+![image5](https://github.com/binbinErices/Car_CRM_System/blob/master/img/4.png?raw=true)  
+
+![image6](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2-2.png?raw=true)  
+**Figure 2-2 Throughput of One-way Function H on Different GPUs(hashes per second)**  
+
+In Figure 2-2, although the number of cores of 1080 is significantly less than Titan X, its performance is significantly improved. This may be because the former adopts more sophisticated architecture Pascal, which is the previous Maxwell architecture. The two-generation architecture has a significant difference to this one-way function algorithm:  
+On 1080, performance continues to increase as the number of simultaneous one-way functions is increased. However, since only 8GB of memory is available, the maximum number of one-way functions that can be calculated simultaneously is only 4K (4GB of memory is used).
+On Titan X, when the number of simultaneous calculations of a one-way function increases by more than 2K, the performance is severely degraded, which may be related to its internal design approach to memory access.  
+Compared with Figure 2-1, the performance of 1080 is basically equivalent to that of a general server.  
+
+
+
+ 
+ 
+
+
