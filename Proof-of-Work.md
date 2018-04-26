@@ -320,10 +320,10 @@ Table 2-4 and figure 2-1 show the performance of one-way function H on different
 |----|---|---|---|---|---|---|---|----|---|    
 | Server | 80 | 315 | 628 | 938 | 837 | 836 | 867 | 858 | 763 |  
 | PC | 168 | 641 | 634 | 631 | 633 | 629 | 627 | 625 | 625 |  
-| Tianhe-2 | 115 | 443 | 797 | 1186 | 1578 | 2337 | 2208 | 2177 | 2171 |  
+| ServerX | 115 | 443 | 797 | 1186 | 1578 | 2337 | 2208 | 2177 | 2171 |  
 | Embedded System | 73 | 138 | 133 | 133 | 133| 133 | 133 |	132 | 133 |  
 
-![image4](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2-1.png?raw=true)  
+![image4](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2-1-2.png?raw=true)  
 **Figure 2-1 Throughput of One-way Function H on Different Platforms(hashes per second)**  
 
 
