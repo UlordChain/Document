@@ -1,4 +1,4 @@
-# A One-Way Function for Proof-of-Work  
+# CryptoHello: A One-Way Function for Proof-of-Work  
 
 In this paper, we present a one-way function H, which is friendly to CPU architectures, but NOT to GPUs, FPGAs or ASICs.  
 
