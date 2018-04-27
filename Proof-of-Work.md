@@ -1,32 +1,32 @@
 # CryptoHello: A One-Way Function for Proof-of-Work  
 
-In this paper, we present a one-way function H, which is friendly to CPU architectures, but NOT to GPUs, FPGAs or ASICs.  
+In this paper, we present a one-way function cryptoHello, which is friendly to CPU architectures, but NOT to GPUs, FPGAs or ASICs.  
 
 
-## 1. Design of One-way Function H
+## 1. Design of One-way Function cryptoHello  
 ### 1.1 Principles
-In order to resist efficiently implementation on GPUs, FPGAs and ASICs, the design of H should satisfy following features:  
-1. More memory size than common hash functions. Considering the cache size of CPUs, the memory size for H is 1MB.  
+In order to resist efficiently implementation on GPUs, FPGAs and ASICs, the design of cryptoHello should satisfy following features:  
+1. More memory size than common hash functions. Considering the cache size of CPUs, the memory size for cryptoHello is 1MB.  
 2. A lot of memory accesses in random mode.  
 3. High serialization and control dependence to prevent parallel execution in the function.  
 4. Using 16 different types of one-way function to increase the chip area for ASIC implementation.  
 
-### 1.2 Design of One-way Function H  
+### 1.2 Design of One-way Function cryptoHello  
 We use following definitions in our paper:  
-[Definition 1] One-Way function y=H(x), the output y is 256 bits.  
+[Definition 1] One-Way function y=cryptoHello(x), the output y is 256 bits.  
 [Definition 2] One-Way function family hi，0≤i≤15. The input of each function is 256 bits, except h0, which can accept arbitrary length input. The output of each function is 256 bits.  
 [Definition 3] Pseudorandom number generator. seed(uint48 s) sets the seed, and rand() returns random result in 48 bits. We choose linear congruential generator Xn+1 = (aXn + c) mod m,  n ≥0，where a =25214903917, c = 11, m = 248 (rand48() in glibc).  
 [Definition 4] Working memory M with size of |M| bytes. We choose |M|=1M=220.  
-[Definition 5] reduce_bit(x, y) to reduce input x to output in y bits. The length of x is l bits，satisfied with l≥y。x is expanded X to L bits, where L mod y =0 and X[L-1:l]=0. X is split into L/y segments in y bits. The output is XOR of all segments.  
+[Definition 5] reduce_bit(x, y) to reduce input x to output in y bits. The length of x is l bits，satisfied with l≥y。x is expanded X to L bits, where L mod y =0 and X[L-1:l]=0. X is split into L/y segments in y bits. The output is *XOR* of all segments.  
 [Definition 6] RRS(x, y) to rotate shift right x with y bits.  
 
-The one-way function H includes three algorithms:   
+The one-way function cryptoHello includes three algorithms:   
 1. Initialize the working memory M.  
 2. Modify the content of M.  
 3. Generate the output according to the content of M.  
 
 **[Alg-1] Initialize the working memory M**  
-Input  :  x  	The input of one-way function y=H(x)  
+Input  :  x  	The input of one-way function y=cryptoHello(x)  
 Output： M 	Working memory    
 Parameters: K   To adjust the computation speed. Larger K implies faster.  
 Variables:  
@@ -120,9 +120,9 @@ Step 2.3.3.1 determines that the one-way function h0 must be performed in the fi
 **Alg-3 flow chart**  
 ![image3](https://github.com/binbinErices/Car_CRM_System/blob/master/img/3.png?raw=true)  
 
-### 1.3 Operations in Function H
+### 1.3 Operations in Function cryptoHello
 The operations in three algorithms of one-way function H are described in table 1-1.    
-**Table 1-1 Operations in One-Way Function H  **    
+**Table 1-1 Operations in One-Way Function cryptoHello  **    
     
  
 | #alg | Calling one-way function family | Working memory access |  
@@ -234,8 +234,8 @@ One-way function family is described in table 1-2 and 1-3.
 
 ```
 
-### 1.5 Output of One-way Function H  
-Standard output of H  
+### 1.5 Output of One-way Function cryptoHello  
+Standard output of cryptoHello  
 H(“0123456789”)= cb98c372548618317a2dc286a7481701e5ea94892c9eb371d932c83d94ddd459    
 H(“HelloWorld”)= 8d184a295c91aa46243c64452c0417fcff4d5ea67b30d43dd1e5a358171b9929    
 
@@ -244,7 +244,7 @@ xi+1=H(xi)  x0=“”  i=1…106
 Assemble all xi to obtain a 32MB bit stream Y.  
 Using NIST random test tool ，test Y’s frequency and runs. Results are presented in table 1-3. All P-values are greater than 0.01. So, the bit stream Y (function H) is pass the random test.  
 
-**Table 3-1 Random Test for Function H**  
+**Table 3-1 Random Test for Function cryptoHello**  
 
 Test Item | P-value
  --- | ------
@@ -252,7 +252,7 @@ Frequency | 0.859141
 Runs	| 0.876262  
 
 
-## 2. Performance of One-way Function H   
+## 2. Performance of One-way Function cryptoHello  
 ### 2.1 Performance on CPU  
 **CPU Platforms**  
 Our test is based on four platforms, including server, PC, Tianhe-2, and embedded system. The parameters of these platforms are presented in table 2-1.  
@@ -310,11 +310,11 @@ With one core on server platform, the execution time distribution of H is descri
 |--|------|------|------|------|  
 | Distribution | 36% | 53% | 1% | 10% |  
 
-**The execution time of function H concentrates on modification memory in alg-2.**
+**The execution time of function cryptoHello concentrates on modification memory in alg-2.**
 
-**Performance of One-way function H**    
-Table 2-4 and figure 2-1 show the performance of one-way function H on different performance. The thread number with the highest performance exactly is equal to the number of the cores.     
-**Table 2-4 Throughput of One-way Function H on Different Platforms (hashes per second)**  
+**Performance of One-way function cryptoHello**    
+Table 2-4 and figure 2-1 show the performance of one-way function cryptoHello on different performance. The thread number with the highest performance exactly is equal to the number of the cores.     
+**Table 2-4 Throughput of One-way Function cryptoHello on Different Platforms (hashes per second)**  
 
 | Number of Threads | 1 | 4 | 8 | 12 | 16 | 24 | 32 | 48 | 64 |  
 |----|---|---|---|---|---|---|---|----|---|    
@@ -324,7 +324,7 @@ Table 2-4 and figure 2-1 show the performance of one-way function H on different
 | Embedded System | 73 | 138 | 133 | 133 | 133| 133 | 133 |	132 | 133 |  
 
 ![image4](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2-1-2.png?raw=true)  
-**Figure 2-1 Throughput of One-way Function H on Different Platforms(hashes per second)**  
+**Figure 2-1 Throughput of One-way Function cryptoHello on Different Platforms(hashes per second)**  
 
 
 ### 2.2 Performance on GPUs  
@@ -345,12 +345,12 @@ Our test is based on Mainstream consumer-level graphics: GTX 1080, GTX Titan X. 
 
 #### 1. Constraint on Number of Simultaneous Threads  
 Because of the limitation of memory size on GPU, only 4 Kilo one-way functions can be executed simultaneously, occupying 4GB memory.
-There is no obvious parallelism within the three main algorithms in function H, so it is difficult to execute a one-way function H at the same time by multiple threads, and only one one-way function can be executed by one thread.  
+There is no obvious parallelism within the three main algorithms in function cryptoHello, so it is difficult to execute a one-way function cryptoHello at the same time by multiple threads, and only one one-way function can be executed by one thread.  
 At this point, there are a total of 4K threads on one GPU. This will lead to the first constraint: the number of threads that can be executed in parallel is too small and overall parallelism is limited.  
 
 ####  2. Constraint on SMT  
 The GPUs use SIMT (Single Instruction Multithreading) method, where one Warp (=32) threads execute the same instruction. In the case of a branch instruction, if the execution paths between the threads are different, all the paths of each thread need to be executed serially, respectively, until all threads in one Warp execute to the same path.  
-In our one-way function H, it will choose one from 16 one-way functions randomly. And the number of cycles varies between 1 and 2D-1 depending on the input data in step 2.3 of Alg-3. This will cause the threads on the GPU to execute different paths so that different threads can only execute serially, thereby suppressing the parallelism of the GPU.  
+In our one-way function cryptoHello, it will choose one from 16 one-way functions randomly. And the number of cycles varies between 1 and 2D-1 depending on the input data in step 2.3 of Alg-3. This will cause the threads on the GPU to execute different paths so that different threads can only execute serially, thereby suppressing the parallelism of the GPU.  
 
 #### 3. Constraint on Memory Access   
 In Alg-2, the access unit to the working memory M is byte, and the address is highly random. Since the GPU on-chip cache has a very limited capacity, the memory access in Alg-2 basically needs to be read from the video memory. Although the memory width of GPU is up to 256 bits (or even 384 bits), it is only valid for ONE byte, which makes the GPU memory access bandwidth only 3% utilization.  
@@ -359,17 +359,65 @@ Due to the large number of reliance on memory accesses, the latency of memory ac
 **Performance**  
 Table 2-6 and Figure 2-2 show the performance on the GTX 1080 and GTX Titan X.  
 
-**Table 2-6 Throughput of One-way Function H on Different GPUs**  
+**Table 2-6 Throughput of One-way Function cryptoHello on Different GPUs**  
 (hashes per second，Single card, thread set to 4096)  
 ![image5](https://github.com/binbinErices/Car_CRM_System/blob/master/img/4.png?raw=true)  
 
 ![image6](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2-2.png?raw=true)  
-**Figure 2-2 Throughput of One-way Function H on Different GPUs(hashes per second)**  
+**Figure 2-2 Throughput of One-way Function cryptoHello on Different GPUs(hashes per second)**  
 
 In Figure 2-2, although the number of cores of 1080 is significantly less than Titan X, its performance is significantly improved. This may be because the former adopts more sophisticated architecture Pascal, which is the previous Maxwell architecture. The two-generation architecture has a significant difference to this one-way function algorithm:  
 On 1080, performance continues to increase as the number of simultaneous one-way functions is increased. However, since only 8GB of memory is available, the maximum number of one-way functions that can be calculated simultaneously is only 4K (4GB of memory is used).  
 On Titan X, when the number of simultaneous calculations of a one-way function increases by more than 2K, the performance is severely degraded, which may be related to its internal design approach to memory access.  
 Compared with Figure 2-1, the performance of 1080 is basically equivalent to that of a general server.  
+
+
+
+## 3. Evaluation for ASIC implementation  
+### 3.1 Analysis of ASIC Architecture  
+#### 3.1.1 Classic ASIC Architecture  
+Typical ASIC chips that support symmetric encryption and decryption operations and hash operations, as shown in Figure 3-1, are divided into a horizontal CPU-based control flow and a vertical flow of operational data.  
+In the vertical direction, the off-chip mass memory, on-chip cache, and the array of accelerated operation modules together form the core data stream that enables accelerated operations. Due to the simple and regular data parallelism between the accelerated arithmetic modules implementing symmetric encryption and decryption operations and hash operations, and the circuit scale of a single acceleration arithmetic module is very small, ranging from 1K to 2K gates, the design of such an ASIC accelerated chip The focus is to make full use of and extend the parallelism of data processing to achieve better acceleration. The specific measures are:  
+1. Expand the bandwidth of on-chip high-speed data cache to off-chip large-capacity data storage. This is mainly achieved by using a wider data bus and more chip pins (but it also introduces expensive package overhead).  
+2. Expand on-chip data parallel processing capabilities. This is mainly by adding more acceleration arithmetic modules in the chip, and at the same time speeding up the arithmetic module to increase the processing capability in parallel. Because of the core combinational operations of symmetric encryption and decryption operations and hash operations, the complexity of these operations is low, and the execution of the operations can often be completed within one beat. The array structure can achieve good results.  
+
+In the horizontal direction, the CPU core is responsible for performing control flow operations. It mainly includes the organization and adjustment of the data structure in the on-chip data cache, and the coordination and management of the work modes of each acceleration arithmetic module. In this chip architecture, the CPU core is not on the critical path that affects the speed and performance of the entire ASIC chip.    
+![image3-1](https://github.com/binbinErices/Car_CRM_System/blob/master/img/3-1.png?raw=true)  
+**Figure 3-1 Typical ASIC Architecture**  
+
+#### 3.1.2 Suppression of Memory-Hard Algorithm Reconstruction of ASICs  
+In order to suppress the adoption of the ASIC chip in Fig. 4.1 and the development of the mining machine based on the ASIC chip configuration, an improved memory-hard algorithm was introduced. The core of Memory-Hard's improved algorithm is to increase the demand for on-chip cache capacity of the accelerated computing module. Since there is a big difference between the CMOS VLSI process and the large-capacity SRAM process for high-speed digital circuits, there is an engineering upper limit for the product yield and cost performance of the integrated SRAM memory capacity in the high-speed ASIC chip.  
+By modifying the algorithm, the demand for the on-chip SRAM capacity of the acceleration operation module is continuously increased. As a result, the number of acceleration operation modules that can be supported by the SRAM with the largest capacity in the chip is gradually reduced, and eventually the ASIC acceleration chip exits the mining due to the cost performance problem. The structure of the ASIC acceleration chip corresponding to this algorithm is shown in Figure 3-2.    
+![image3-2](https://github.com/binbinErices/Car_CRM_System/blob/master/img/3-2.png?raw=true)  
+**Figure 3-2 ASIC Architecture with Memory-Hard Algorithm**  
+
+The Memory-Hard improved algorithm can effectively reduce the number of acceleration arithmetic modules that can be integrated in a single chip. However, due to the small circuit scale (1K to 2K gates) of the accelerated arithmetic module itself, the cost of a single ASIC accelerated chip can be effectively controlled. The overall algorithm execution speed of the board-level system can be improved by adopting multi-chip parallel work. We need to design more effective ASIC chips and mine machine suppression algorithms.   
+
+#### 3.1.3 Suppression of Complex Control Flow Algorithms for ASICs  
+In fact, by analyzing the principles and structures of the above three algorithms, it is known that by adopting a combination of these three algorithms that have been serialized and modified, the total algorithm execution time is complicated, serialized, and intensively accessed. The control of popular execution takes more than 90% of the time, and the hash function calculation takes less than 10% of the time. ASIC Acceleration The acceleration algorithm in the chip solves the acceleration problem that corresponds to the execution of the hash function instruction. The performance improvement in this part is limited to less than 10% of the algorithm execution.  
+This algorithmic feature has a great limitation on the design and implementation of ASIC chips. It is manifested in the following three aspects:  
+1. For the program control flow and instruction serial execution part that accounts for more than 90% of the time, a simple acceleration component scheme is difficult to directly implement;  
+2. For a conventional ASIC design scheme based on a state machine controller, although the state machine controller can theoretically implement a complex control structure, it cannot effectively speed up the sequence of instructions that must be executed;  
+3. The dedicated acceleration module can only accelerate the computation load by 10%, which does not help the overall performance improvement.  
+For sequences of instructions that must be executed sequentially, modern microprocessors provide deep instruction pipelines and multi-level caches to efficiently develop parallelism between multiple instructions. Therefore, we believe that a viable accelerated ASIC chip solution should use high-speed CPUs. Designed for the core SOC chip to accelerate the implementation of the algorithm. This results in a new complex control flow algorithm to suppress and modify the ASIC acceleration chip. The corresponding chip structure is shown in Figure 3-3.  
+![image3-3](https://github.com/binbinErices/Car_CRM_System/blob/master/img/3-3.png?raw=true)      
+**Figure 3-3 ASIC Architecture for Complex Control Flow Algorithms**  
+
+## 3.2 ASIC Architecture based on ARM Cores  
+From the comparative analysis of Fig. 3-1, we can see that the embedded processor TX1 with 4 ARM A57 cores integrates three specially-designed algorithm combinations that have been serialized, and its acceleration is increased by the number of cores. When using more threads, its acceleration effect remains unchanged, which is consistent with the algorithm's serial execution mechanism, and it also meets our expected algorithm design goals.   
+At the same time, we can see from the comparative analysis of Figure 3-1, we proposed a one-way function cryptoHello algorithm, running on different hardware platforms follow the same rules, namely: the algorithm execution speed is proportional to the performance of a single physical CPU core and the number of cores. For our proposed one-way function cryptoHello, a feasible ASIC chip design scheme should adopt the high-speed CPU as the core SoC chip design, and the SoC chip should meet two requirements:  
+1. The performance of a single physical CPU core should be high enough;  
+2. The chip should integrate as many physical CPU cores as possible.  
+Currently the most popular CPU core on the market is a series of microprocessors provided by ARM. According to the first requirement, the currently available high-performance CPU core is ARM's A73 core, and the highest frequency can reach 2.8GHZ. According to the second requirement, the number of A73 cores that a single chip can integrate can reach 4. This is because in the 10nm process, the integration of four A73 cores, using 64KB instructions L1 Cache and 64KB data L1 Cache, and 2MB L2 Cache chip area has reached 5mm2. more integration of CPU cores and cache storage will significantly increase the chip's cost.  
+Under this four A73 cores design scheme, the number of its processor cores is far less than the number of processor cores of the servers and Tianhe-2 in Table 2-1, so its performance will also be weaker than that of existing CPUs.  
+
+At the same time, the cost of this SoC chip is high, mainly including the following two parts:  
+1, CPU core license fee. The single-use license fee for the ARM A73 core is $5 million, and the unlimited use of the license fee for three years is $15 million.  
+2. The NRE cost of the chip mask. Supporting the fastest 7-nm process, the cost of each mask is about 20,000 US dollars, the standard SoC chip needs to make 50 masks, the cost is about 1 million US dollars.  
+Considering R&D investment, the cost of developing the SoC is about 10 to 20 million U.S. dollars, and it takes about 2 years to mass produce.  
+
+
+
 
 
 
