@@ -122,7 +122,7 @@ Step 2.3.3.1 determines that the one-way function h0 must be performed in the fi
 
 ### 1.3 Operations in Function cryptoHello
 The operations in three algorithms of one-way function H are described in table 1-1.    
-**Table 1-1 Operations in One-Way Function cryptoHello  **    
+**Table 1-1 Operations in One-Way Function cryptoHello**  
     
  
 | #alg | Calling one-way function family | Working memory access |  
