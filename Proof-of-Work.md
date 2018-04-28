@@ -3,17 +3,17 @@
 In this paper, we present a one-way function cryptoHello, which is friendly to CPU architectures, but NOT to GPUs, FPGAs or ASICs.  
 
 
-## 1. Design of One-way Function cryptoHello  
+## 1. Design of One-way Function CryptoHello  
 ### 1.1 Principles
-In order to resist efficiently implementation on GPUs, FPGAs and ASICs, the design of cryptoHello should satisfy following features:  
-1. More memory size than common hash functions. Considering the cache size of CPUs, the memory size for cryptoHello is 1MB.  
+In order to resist efficiently implementation on GPUs, FPGAs and ASICs, the design of CryptoHello  should satisfy following features:  
+1. More memory size than common hash functions. Considering the cache size of CPUs, the memory size for CryptoHello  is 1MB.  
 2. A lot of memory accesses in random mode.  
 3. High serialization and control dependence to prevent parallel execution in the function.  
 4. Using 16 different types of one-way function to increase the chip area for ASIC implementation.  
 
-### 1.2 Design of One-way Function cryptoHello  
+### 1.2 Design of One-way Function CryptoHello   
 We use following definitions in our paper:  
-[Definition 1] One-Way function y=cryptoHello(x), the output y is 256 bits.  
+[Definition 1] One-Way function y=CryptoHello(x), the output y is 256 bits.  
 [Definition 2] One-Way function family hi，0≤i≤15. The input of each function is 256 bits, except h0, which can accept arbitrary length input. The output of each function is 256 bits.  
 [Definition 3] Pseudorandom number generator. seed(uint48 s) sets the seed, and rand() returns random result in 48 bits. We choose linear congruential generator Xn+1 = (aXn + c) mod m,  n ≥0，where a =25214903917, c = 11, m = 248 (rand48() in glibc).  
 [Definition 4] Working memory M with size of |M| bytes. We choose |M|=1M=220.  
@@ -26,7 +26,7 @@ The one-way function cryptoHello includes three algorithms:
 3. Generate the output according to the content of M.  
 
 **[Alg-1] Initialize the working memory M**  
-Input  :  x  	The input of one-way function y=cryptoHello(x)  
+Input  :  x  	The input of one-way function y=CryptoHello(x)  
 Output： M 	Working memory    
 Parameters: K   To adjust the computation speed. Larger K implies faster.  
 Variables:  
@@ -120,9 +120,9 @@ Step 2.3.3.1 determines that the one-way function h0 must be performed in the fi
 **Alg-3 flow chart**  
 ![image3](https://github.com/binbinErices/Car_CRM_System/blob/master/img/3.png?raw=true)  
 
-### 1.3 Operations in Function cryptoHello
+### 1.3 Operations in Function CryptoHello
 The operations in three algorithms of one-way function H are described in table 1-1.    
-**Table 1-1 Operations in One-Way Function cryptoHello**  
+**Table 1-1 Operations in One-Way Function CryptoHello**  
     
  
 | #alg | Calling one-way function family | Working memory access |  
@@ -234,8 +234,8 @@ One-way function family is described in table 1-2 and 1-3.
 
 ```
 
-### 1.5 Output of One-way Function cryptoHello  
-Standard output of cryptoHello  
+### 1.5 Output of One-way Function CryptoHello  
+Standard output of CryptoHello  
 H(“0123456789”)= cb98c372548618317a2dc286a7481701e5ea94892c9eb371d932c83d94ddd459    
 H(“HelloWorld”)= 8d184a295c91aa46243c64452c0417fcff4d5ea67b30d43dd1e5a358171b9929    
 
@@ -244,7 +244,7 @@ xi+1=H(xi)  x0=“”  i=1…106
 Assemble all xi to obtain a 32MB bit stream Y.  
 Using NIST random test tool ，test Y’s frequency and runs. Results are presented in table 1-3. All P-values are greater than 0.01. So, the bit stream Y (function H) is pass the random test.  
 
-**Table 3-1 Random Test for Function cryptoHello**  
+**Table 3-1 Random Test for Function CryptoHello**  
 
 Test Item | P-value
  --- | ------
@@ -252,7 +252,7 @@ Frequency | 0.859141
 Runs	| 0.876262  
 
 
-## 2. Performance of One-way Function cryptoHello  
+## 2. Performance of One-way Function CryptoHello  
 ### 2.1 Performance on CPU  
 **CPU Platforms**  
 Our test is based on four platforms, including server, PC, Tianhe-2, and embedded system. The parameters of these platforms are presented in table 2-1.  
@@ -310,11 +310,11 @@ With one core on server platform, the execution time distribution of H is descri
 |--|------|------|------|------|  
 | Distribution | 36% | 53% | 1% | 10% |  
 
-**The execution time of function cryptoHello concentrates on modification memory in alg-2.**
+**The execution time of function CryptoHello concentrates on modification memory in alg-2.**
 
-**Performance of One-way function cryptoHello**    
-Table 2-4 and figure 2-1 show the performance of one-way function cryptoHello on different performance. The thread number with the highest performance exactly is equal to the number of the cores.     
-**Table 2-4 Throughput of One-way Function cryptoHello on Different Platforms (hashes per second)**  
+**Performance of One-way function CryptoHello**    
+Table 2-4 and figure 2-1 show the performance of one-way function CryptoHello on different performance. The thread number with the highest performance exactly is equal to the number of the cores.     
+**Table 2-4 Throughput of One-way Function CryptoHello on Different Platforms (hashes per second)**  
 
 | Number of Threads | 1 | 4 | 8 | 12 | 16 | 24 | 32 | 48 | 64 |  
 |----|---|---|---|---|---|---|---|----|---|    
@@ -324,7 +324,7 @@ Table 2-4 and figure 2-1 show the performance of one-way function cryptoHello on
 | Embedded System | 73 | 138 | 133 | 133 | 133| 133 | 133 |	132 | 133 |  
 
 ![image4](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2-1-2.png?raw=true)  
-**Figure 2-1 Throughput of One-way Function cryptoHello on Different Platforms(hashes per second)**  
+**Figure 2-1 Throughput of One-way Function CryptoHello on Different Platforms(hashes per second)**  
 
 
 ### 2.2 Performance on GPUs  
@@ -350,7 +350,7 @@ At this point, there are a total of 4K threads on one GPU. This will lead to the
 
 ####  2. Constraint on SMT  
 The GPUs use SIMT (Single Instruction Multithreading) method, where one Warp (=32) threads execute the same instruction. In the case of a branch instruction, if the execution paths between the threads are different, all the paths of each thread need to be executed serially, respectively, until all threads in one Warp execute to the same path.  
-In our one-way function cryptoHello, it will choose one from 16 one-way functions randomly. And the number of cycles varies between 1 and 2D-1 depending on the input data in step 2.3 of Alg-3. This will cause the threads on the GPU to execute different paths so that different threads can only execute serially, thereby suppressing the parallelism of the GPU.  
+In our one-way function CryptoHello, it will choose one from 16 one-way functions randomly. And the number of cycles varies between 1 and 2D-1 depending on the input data in step 2.3 of Alg-3. This will cause the threads on the GPU to execute different paths so that different threads can only execute serially, thereby suppressing the parallelism of the GPU.  
 
 #### 3. Constraint on Memory Access   
 In Alg-2, the access unit to the working memory M is byte, and the address is highly random. Since the GPU on-chip cache has a very limited capacity, the memory access in Alg-2 basically needs to be read from the video memory. Although the memory width of GPU is up to 256 bits (or even 384 bits), it is only valid for ONE byte, which makes the GPU memory access bandwidth only 3% utilization.  
@@ -359,12 +359,12 @@ Due to the large number of reliance on memory accesses, the latency of memory ac
 **Performance**  
 Table 2-6 and Figure 2-2 show the performance on the GTX 1080 and GTX Titan X.  
 
-**Table 2-6 Throughput of One-way Function cryptoHello on Different GPUs**  
+**Table 2-6 Throughput of One-way Function CryptoHello on Different GPUs**  
 (hashes per second，Single card, thread set to 4096)  
 ![image5](https://github.com/binbinErices/Car_CRM_System/blob/master/img/4.png?raw=true)  
 
 ![image6](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2-2.png?raw=true)  
-**Figure 2-2 Throughput of One-way Function cryptoHello on Different GPUs(hashes per second)**  
+**Figure 2-2 Throughput of One-way Function CryptoHello on Different GPUs(hashes per second)**  
 
 In Figure 2-2, although the number of cores of 1080 is significantly less than Titan X, its performance is significantly improved. This may be because the former adopts more sophisticated architecture Pascal, which is the previous Maxwell architecture. The two-generation architecture has a significant difference to this one-way function algorithm:  
 On 1080, performance continues to increase as the number of simultaneous one-way functions is increased. However, since only 8GB of memory is available, the maximum number of one-way functions that can be calculated simultaneously is only 4K (4GB of memory is used).  
