@@ -1,6 +1,6 @@
 # CryptoHello工作量证明方案  
 
-本项目的目标是设计一种在CPU上可以较为高效工作，但是在GPU、FPGA、ASIC上却难以高效事先的工作量证明方案。其基本描述是设计一个单向函数H，满足y=CryptoHello(x)。CryptoHello应满足的要求类似于散列函数，即单向性、雪崩性、随机性，其计算效率在CPU上较高，但是在GPU、FPGA、ASIC上难以发挥出性能。  
+本项目的目标是设计一种在CPU上可以较为高效工作，但是在GPU、FPGA、ASIC上却难以高效事先的工作量证明方案。其基本描述是设计一个单向函数CryptoHello，满足y=CryptoHello(x)。CryptoHello应满足的要求类似于散列函数，即单向性、雪崩性、随机性，其计算效率在CPU上较高，但是在GPU、FPGA、ASIC上难以发挥出性能。  
 
 ## 一、总体技术方案    
 
@@ -247,11 +247,11 @@ seed2(reduce_bit(a[16:23],48)); 	seed3(reduce_bit(a[24:31],48));
 
 ### 1.5 单向函数CryptoHello测试  
 
-单向函数H的标准输出：  
+单向函数CryptoHello的标准输出：  
 CryptoHello(“0123456789”)= cb98c372548618317a2dc286a7481701e5ea94892c9eb371d932c83d94ddd459  
 CryptoHello(“HelloWorld”)= 8d184a295c91aa46243c64452c0417fcff4d5ea67b30d43dd1e5a358171b9929  
 
-对单向函数H执行106次。第1次输入为空值，第i次的输入xi为上次输出yi-1，输出为yi。将yi按照顺序拼接在一起，形成   32M   字节的数据流Y。  
+对单向函数CryptoHello执行106次。第1次输入为空值，第i次的输入xi为上次输出yi-1，输出为yi。将yi按照顺序拼接在一起，形成   32M   字节的数据流Y。  
 对Y执行NIST的随机数测试工具集 ，进行频数测试和游程测试。结果如表1-3所示，可以看到频率和游程测试的P值均大于0.01，所以生成的序列是随机的。 
 
 **表1-3 单向函数CryptoHello的随机性检查结果**  
