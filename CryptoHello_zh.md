@@ -271,7 +271,7 @@ CryptoHello(“HelloWorld”)= 8d184a295c91aa46243c64452c0417fcff4d5ea67b30d43dd
 
 **表2-1 CPU测试平台**  
 
-|硬件平台	|平台1服务器|平台2PC机|平台3天河二号|	平台4嵌入式系统|  
+|硬件平台	|平台1服务器|平台2PC机|平台3服务器X|平台4嵌入式系统|  
 |-------|-----|------|-----|-------|  				
 |处理器型号|E5-2609|Core i5 7500|E5-2692 v2|TX1|  
 |微结构|Haswell|Kaby Lake| Ivy Bridge|A57|  
@@ -324,7 +324,7 @@ CryptoHello(“HelloWorld”)= 8d184a295c91aa46243c64452c0417fcff4d5ea67b30d43dd
 **可以看出单向函数H中的主要计算开销在于算法2中的修改存储器内容。**  
 
 #### 性能  
-单向函数H性能与线程数的关系如表2-4和图2-1所示。其中每个平台的最优性能如黑体所示，恰为对应平台的核数。  
+单向函数CryptoHello性能与线程数的关系如表2-4和图2-1所示。其中每个平台的最优性能如黑体所示，恰为对应平台的核数。  
 
 **表2-4 不同平台上单向函数CryptoHello的性能（单位：每秒的计算次数）**  
 
@@ -335,7 +335,7 @@ CryptoHello(“HelloWorld”)= 8d184a295c91aa46243c64452c0417fcff4d5ea67b30d43dd
 | Tianhe-2 | 115 | 443 | 797 | 1186 | 1578 | 2337 | 2208 | 2177 | 2171 |  
 | Embedded System | 73 | 138 | 133 | 133 | 133| 133 | 133 |	132 | 133 |  
 
-![image4](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2-1.png?raw=true)  
+![image4](https://github.com/binbinErices/Car_CRM_System/raw/master/img/2-1-2.png?raw=true)  
 
 **图2-1 不同平台上单向函数CryptoHello的性能（单位：每秒的计算次数）**
 
