@@ -1,6 +1,6 @@
 # CryptoHello: A One-Way Function for Proof-of-Work  
 
-In this paper, we present a one-way function cryptoHello, which is friendly to CPU architectures, but NOT to GPUs, FPGAs or ASICs.  
+In this paper, we present a one-way function CryptoHello, which is friendly to CPU architectures, but NOT to GPUs, FPGAs or ASICs.  
 
 
 ## 1. Design of One-way Function CryptoHello  
@@ -255,7 +255,7 @@ Runs	| 0.876262
 ## 2. Performance of One-way Function CryptoHello  
 ### 2.1 Performance on CPU  
 **CPU Platforms**  
-Our test is based on four platforms, including server, PC, Tianhe-2, and embedded system. The parameters of these platforms are presented in table 2-1.  
+Our test is based on four platforms, including server, PC, ServerX, and embedded system. The parameters of these platforms are presented in table 2-1.  
 **Table 2-1 CPU Platforms**  
 
 |  Platforms  | #1 Server | #2 PC | #3 ServerX | #4 Embedded System|  
