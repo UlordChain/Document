@@ -258,7 +258,7 @@ Runs	| 0.876262
 Our test is based on four platforms, including server, PC, ServerX, and embedded system. The parameters of these platforms are presented in table 2-1.  
 **Table 2-1 CPU Platforms**  
 
-|  Platforms  | #1 Server | #2 PC | #3 ServerX | #4 Embedded System|  
+|  Platforms  | Server | PC | ServerX | Embedded System|  
 | -------- | -------- | -------------- | --------- | ---------- |  
 | Processor | E5-2609 | Core i5 7500 |E5-2692 v2 | TX1 |  
 | Micro-architecture | Haswell | Kaby Lake | Ivy Bridge |A57|  
