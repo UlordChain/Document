@@ -6,6 +6,8 @@
  Through smart contract, the benefit of content creators can be protected and the platform intermediate links can be removed to maximize the creators' benefits.
 ## InterPlanetary Domain Name System, IPDNS
  By constructing InterPlanetary Domain Name System, it provides users decentralized domain name analysis service. The domain name is easy to remember and convenient to use.
+ UDFS(Ulord Distributed File System) is base on IPFS(InterPlanetary File System）.
+ 
 ## Multi-sidechain Technology
  According the classification of application features, Ulord takes different sidechains to load different applications and through joint mining technology ensures the sidechain safety on Ulord.
 ## Mixed Consensus Mechanism
