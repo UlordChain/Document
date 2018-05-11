@@ -15,7 +15,7 @@ In order to resist efficiently implementation on GPUs, FPGAs and ASICs, the desi
 We use following definitions in our paper:  
 [Definition 1] One-Way function y=CryptoHello(x), the output y is 256 bits.  
 [Definition 2] One-Way function family hi，0≤i≤15. The input of each function is 256 bits, except h0, which can accept arbitrary length input. The output of each function is 256 bits.  
-[Definition 3] Pseudorandom number generator. seed(uint48 s) sets the seed, and rand() returns random result in 48 bits. We choose linear congruential generator Xn+1 = (aXn + c) mod m,  n ≥0，where a =25214903917, c = 11, m = 248 (rand48() in glibc).  
+[Definition 3] Pseudorandom number generator. seed(uint48 s) sets the seed, and rand() returns random result in 48 bits. We choose linear congruential generator Xn+1 = (aXn + c) mod m,  n ≥0，where a =25214903917, c = 11, m = 2^48 (rand48() in glibc).  
 [Definition 4] Working memory M with size of |M| bytes. We choose |M|=1M=220.  
 [Definition 5] reduce_bit(x, y) to reduce input x to output in y bits. The length of x is l bits，satisfied with l≥y。x is expanded X to L bits, where L mod y =0 and X[L-1:l]=0. X is split into L/y segments in y bits. The output is *XOR* of all segments.  
 [Definition 6] RRS(x, y) to rotate shift right x with y bits.  
@@ -33,7 +33,7 @@ Variables:
 a, b  vectors in 32 bytes，a[c1:c2] means the content of a from c1 to c2  
 i    32-bit unsigned integer  
 1. a[0:31]=h0(x);   
-2. loop, i from 0 to |M|/32-1 	//if |M|=1M, the loop count is 215  
+2. loop, i from 0 to |M|/32-1 	//if |M|=1M, the loop count is 2^15  
 2.1  if i mod K ≠0      	//K is a configurable parameter to adjust speed  
 2.1.1   	b[0 : 7] = rand0()*xor*(rand0()<<16);   
 2.1.2   	b[8 :15] = rand1()*xor*(rand1()<<16);   
@@ -53,8 +53,8 @@ seed2(reduce_bit(a[16:23],48)); 	seed3(reduce_bit(a[24:31],48));
 
 **Comment on Alg-1**  
 This algorithm will generate the random content in |M| bytes for working memory. In step 2, 32 bytes will be generated in one loop. Consecutive K-1 blocks are generated from random generator (in step 2.1), and one block from one-way function family (in step 2.2). Because the speed of random generator is faster than one-way functions, increasing K can reduce the frequentness of calling one-way functions to increase the fulfill speed of working memory.  
-In random fulfilling (from step 2.1.1 to 2.1.4), there are four independent generators to produce a 32-byte block with a rotate shift in variable bits (step 2.1.5). Two factors determine the content of the 32-byte block: 1) Four 48-bit seeds; 2) loop control variable i. So the number of all possible input to fulfill one block is 296+15=2111.  
-When calling one-way function (step 2.2.2), whose input depend on latest output of one-way function and the content of previous K-1 blocks (step 2.1.7). It results in the computation of one-way function must be followed random fulfill.  The number of all possible input of one-way function is 2256+8=2264.  
+In random fulfilling (from step 2.1.1 to 2.1.4), there are four independent generators to produce a 32-byte block with a rotate shift in variable bits (step 2.1.5). Two factors determine the content of the 32-byte block: 1) Four 48-bit seeds; 2) loop control variable i. So the number of all possible input to fulfill one block is 2^(96+15)=2^111.  
+When calling one-way function (step 2.2.2), whose input depend on latest output of one-way function and the content of previous K-1 blocks (step 2.1.7). It results in the computation of one-way function must be followed random fulfill.  The number of all possible input of one-way function is 2^(256+8)=2^264.  
 In step 2.2.3, the seeds of four generators are updated according to the output of the one-way function. It requires that the following random fulfill must run after one-way function.  
 It can be seen that alg-1 is satisfied: 1) execution sequentially; 2) impossible to predict the content of one block.  
 
@@ -75,11 +75,11 @@ b: 64-byte array; a: 32-byte array
 2. Loop, i from 0 to C      	
 2.1   seed(reduce_bit(a[0:31], 48)); 		//Initialize random generator  
 2.2   Loop, j from 0 to 64*L-1  				
-2.2.1    base=(rand()+r) mod 264; offset= (reduce_bit(r,8)<<8)+1;   //random memory address  
+2.2.1    base=(rand()+r) mod 2^64; offset= (reduce_bit(r,8)<<8)+1;   //random memory address  
 2.2.2    addr1=(base-offset) mod |M|; addr2=(base+offset) mod |M|  
 2.2.3    t1=M[addr1];		t2=M[addr2];  	s=a[j mod 32];  
 2.2.4    M[addr1]= t2 *xor* s;  	M[addr2]= t1 *xor* s; 	b[j mod 64]=t1 *xor* t2;		//Modify M 
-2.2.5    r=(r+s+t1+t2) mod 264;  					
+2.2.5    r=(r+s+t1+t2) mod 2^64;  					
 2.3   t=reduce_bit(r,4);  
 2.4   a[0:31]=reduce_bit(b[0:63], 256);  
 2.5   a[0:31]=ht(RRS(a[0:31], reduce_bit(i+r,8)));  
@@ -129,7 +129,7 @@ The operations in three algorithms of one-way function H are described in table 
 | -------- |--------------|---------|  
 | alg-1 | \|M\|/32K | \|M\|/32 256-bit memory write operations | 
 | alg-2 | C | 128CL 8-bit memory read operations 128CL 8-bit memory read operations |  
-| alg-3 | \|M\|/(32*2D-1) | \|M\|/32 256-bit memory read operations |   
+| alg-3 | \|M\|/(32*2^(D-1)) | \|M\|/32 256-bit memory read operations |   
 
  **Parameter configuration: |M|=1M, K=128, L=4, C=512, D=8**
  
@@ -239,7 +239,7 @@ Standard output of CryptoHello
 H(“0123456789”)= cb98c372548618317a2dc286a7481701e5ea94892c9eb371d932c83d94ddd459    
 H(“HelloWorld”)= 8d184a295c91aa46243c64452c0417fcff4d5ea67b30d43dd1e5a358171b9929    
 
-Calling function H consecutively as following:  
+Calling function CryptoHello  consecutively as following:  
 xi+1=H(xi)  x0=“”  i=1…106  
 Assemble all xi to obtain a 32MB bit stream Y.  
 Using NIST random test tool ，test Y’s frequency and runs. Results are presented in table 1-3. All P-values are greater than 0.01. So, the bit stream Y (function H) is pass the random test.  
