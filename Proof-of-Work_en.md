@@ -1,9 +1,19 @@
 # CryptoHello: A One-Way Function for Proof-of-Work  
 
-In this paper, we present a one-way function CryptoHello, which is friendly to CPU architectures, but NOT to GPUs, FPGAs or ASICs.  
+In this paper, we present a one-way function CryptoHello, which is friendly to CPU architectures, but NOT to GPUs, FPGAs or ASICs.
+
+# Contents  
+
+- [1. Design of One-way Function CryptoHello](#1-design-of-one-way-function-cryptohello)  
+  - [1.1 Principles](#11-principles)  
+  - [1.2 Design of One-way Function CryptoHello](#12-design-of-one-way-function-cryptohello)  
+  - [1.3 Operations in Function CryptoHello](#13-operations-in-function-cryptohello)  
+  - [1.4 One-way Function Family](#14-one-way-function-family)   
+  - [1.5 Output of One-way Function CryptoHello](#15-output-of-one-way-function-cryptohello)   
 
 
-## 1. Design of One-way Function CryptoHello  
+## 1. Design of One-way Function CryptoHello  
+
 ### 1.1 Principles
 In order to resist efficiently implementation on GPUs, FPGAs and ASICs, the design of CryptoHello  should satisfy following features:  
 1. More memory size than common hash functions. Considering the cache size of CPUs, the memory size for CryptoHello  is 1MB.  
