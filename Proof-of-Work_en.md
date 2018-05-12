@@ -10,8 +10,16 @@ In this paper, we present a one-way function CryptoHello, which is friendly to C
   - [1.3 Operations in Function CryptoHello](#13-operations-in-function-cryptohello)  
   - [1.4 One-way Function Family](#14-one-way-function-family)   
   - [1.5 Output of One-way Function CryptoHello](#15-output-of-one-way-function-cryptohello)   
-
-
+- [2. Performance of One-way Function CryptoHello](#2-performance-of-one-way-function-cryptohello)  
+  - [2.1 Performance on CPU](#21-performance-on-cpu)  
+  - [2.2 Performance on GPUs](#22-performance-on-gpus)  
+- [3. Evaluation for ASIC implementation](#3-evaluation-for-asic-implementation)  
+  - [3.1 Analysis of ASIC Architecture](#31-analysis-of-asic-architecture)  
+    - [3.1.1 Classic ASIC Architecture](#311-classic-asic-architecture)    
+    - [3.1.2 Suppression of Memory-Hard Algorithm Reconstruction of ASICs](#312-suppression-of-memory-hard-algorithm-reconstruction-of-asics)  
+    - [3.1.3 Suppression of Complex Control Flow Algorithms for ASICs](#313-suppression-of-complex-control-flow-algorithms-for-asics)  
+  - [3.2 ASIC Architecture based on ARM Cores](#32-asic-architecture-based-on-arm-cores)  
+  
 ## 1. Design of One-way Function CryptoHello  
 
 ### 1.1 Principles
