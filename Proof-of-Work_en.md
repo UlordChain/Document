@@ -77,7 +77,7 @@ In step 2.2.3, the seeds of four generators are updated according to the output 
 It can be seen that alg-1 is satisfied: 1) execution sequentially; 2) impossible to predict the content of one block.  
 
 **Alg-1 flow chart**    
-![image](https://github.com/binbinErices/Car_CRM_System/blob/master/img/1.png?raw=true)
+![image](https://github.com/UlordChain/Document/blob/master/img/1.png?raw=true)
 
 **[Alg-2] Modify Working Memory**  
 Input  :   M    Working memory  
@@ -111,7 +111,7 @@ The one-way function input of step 2.5 depends on the memory access contents of 
 Step 2.6 fuse the execution information of all the one-way functions in c as the random number input of the subsequent algorithm.  
 
 **Alg-2 flow chart**    
-![image2](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2.png?raw=true)  
+![image2](https://github.com/UlordChain/Document/blob/master/img/2.png?raw=true)  
 
 **[Alg-3] Generate output based on working memory**  
 Input  :   M 	Working memory  
@@ -136,7 +136,7 @@ The one-way function calculation in step 2.4 adds the factor of the loop variabl
 Step 2.3.3.1 determines that the one-way function h0 must be performed in the final step of the algorithm.  
  
 **Alg-3 flow chart**  
-![image3](https://github.com/binbinErices/Car_CRM_System/blob/master/img/3.png?raw=true)  
+![image3](https://github.com/UlordChain/Document/blob/master/img/3.png?raw=true)  
 
 ### 1.3 Operations in Function CryptoHello
 The operations in three algorithms of one-way function H are described in table 1-1.    
@@ -341,7 +341,7 @@ Table 2-4 and figure 2-1 show the performance of one-way function CryptoHello on
 | ServerX | 115 | 443 | 797 | 1186 | 1578 | 2337 | 2208 | 2177 | 2171 |  
 | Embedded System | 73 | 138 | 133 | 133 | 133| 133 | 133 |	132 | 133 |  
 
-![image4](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2-1-2.png?raw=true)  
+![image4](https://github.com/UlordChain/Document/blob/master/img/2-1-2.png?raw=true)  
 **Figure 2-1 Throughput of One-way Function CryptoHello on Different Platforms(hashes per second)**  
 
 
@@ -379,9 +379,9 @@ Table 2-6 and Figure 2-2 show the performance on the GTX 1080 and GTX Titan X.
 
 **Table 2-6 Throughput of One-way Function CryptoHello on Different GPUs**  
 (hashes per second，Single card, thread set to 4096)  
-![image5](https://github.com/binbinErices/Car_CRM_System/blob/master/img/4.png?raw=true)  
+![image5](https://github.com/UlordChain/Document/blob/master/img/4.png?raw=true)  
 
-![image6](https://github.com/binbinErices/Car_CRM_System/blob/master/img/2-2.png?raw=true)  
+![image6](https://github.com/UlordChain/Document/blob/master/img/2-2.png?raw=true)  
 **Figure 2-2 Throughput of One-way Function CryptoHello on Different GPUs(hashes per second)**  
 
 In Figure 2-2, although the number of cores of 1080 is significantly less than Titan X, its performance is significantly improved. This may be because the former adopts more sophisticated architecture Pascal, which is the previous Maxwell architecture. The two-generation architecture has a significant difference to this one-way function algorithm:  
@@ -400,13 +400,13 @@ In the vertical direction, the off-chip mass memory, on-chip cache, and the arra
 2. Expand on-chip data parallel processing capabilities. This is mainly by adding more acceleration arithmetic modules in the chip, and at the same time speeding up the arithmetic module to increase the processing capability in parallel. Because of the core combinational operations of symmetric encryption and decryption operations and hash operations, the complexity of these operations is low, and the execution of the operations can often be completed within one beat. The array structure can achieve good results.  
 
 In the horizontal direction, the CPU core is responsible for performing control flow operations. It mainly includes the organization and adjustment of the data structure in the on-chip data cache, and the coordination and management of the work modes of each acceleration arithmetic module. In this chip architecture, the CPU core is not on the critical path that affects the speed and performance of the entire ASIC chip.    
-![image3-1](https://github.com/binbinErices/Car_CRM_System/blob/master/img/3-1.png?raw=true)  
+![image3-1](https://github.com/UlordChain/Document/blob/master/img/3-1.png?raw=true)  
 **Figure 3-1 Typical ASIC Architecture**  
 
 #### 3.1.2 Suppression of Memory-Hard Algorithm Reconstruction of ASICs  
 In order to suppress the adoption of the ASIC chip in Fig. 4.1 and the development of the mining machine based on the ASIC chip configuration, an improved memory-hard algorithm was introduced. The core of Memory-Hard's improved algorithm is to increase the demand for on-chip cache capacity of the accelerated computing module. Since there is a big difference between the CMOS VLSI process and the large-capacity SRAM process for high-speed digital circuits, there is an engineering upper limit for the product yield and cost performance of the integrated SRAM memory capacity in the high-speed ASIC chip.  
 By modifying the algorithm, the demand for the on-chip SRAM capacity of the acceleration operation module is continuously increased. As a result, the number of acceleration operation modules that can be supported by the SRAM with the largest capacity in the chip is gradually reduced, and eventually the ASIC acceleration chip exits the mining due to the cost performance problem. The structure of the ASIC acceleration chip corresponding to this algorithm is shown in Figure 3-2.    
-![image3-2](https://github.com/binbinErices/Car_CRM_System/blob/master/img/3-2.png?raw=true)  
+![image3-2](https://github.com/UlordChain/Document/blob/master/img/3-2.png?raw=true)  
 **Figure 3-2 ASIC Architecture with Memory-Hard Algorithm**  
 
 The Memory-Hard improved algorithm can effectively reduce the number of acceleration arithmetic modules that can be integrated in a single chip. However, due to the small circuit scale (1K to 2K gates) of the accelerated arithmetic module itself, the cost of a single ASIC accelerated chip can be effectively controlled. The overall algorithm execution speed of the board-level system can be improved by adopting multi-chip parallel work. We need to design more effective ASIC chips and mine machine suppression algorithms.   
@@ -418,7 +418,7 @@ This algorithmic feature has a great limitation on the design and implementation
 2. For a conventional ASIC design scheme based on a state machine controller, although the state machine controller can theoretically implement a complex control structure, it cannot effectively speed up the sequence of instructions that must be executed;  
 3. The dedicated acceleration module can only accelerate the computation load by 10%, which does not help the overall performance improvement.  
 For sequences of instructions that must be executed sequentially, modern microprocessors provide deep instruction pipelines and multi-level caches to efficiently develop parallelism between multiple instructions. Therefore, we believe that a viable accelerated ASIC chip solution should use high-speed CPUs. Designed for the core SOC chip to accelerate the implementation of the algorithm. This results in a new complex control flow algorithm to suppress and modify the ASIC acceleration chip. The corresponding chip structure is shown in Figure 3-3.  
-![image3-3](https://github.com/binbinErices/Car_CRM_System/blob/master/img/3-3.png?raw=true)      
+![image3-3](https://github.com/UlordChain/Document/blob/master/img/3-3.png?raw=true)      
 **Figure 3-3 ASIC Architecture for Complex Control Flow Algorithms**  
 
 ## 3.2 ASIC Architecture based on ARM Cores  
