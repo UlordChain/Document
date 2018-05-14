@@ -79,7 +79,7 @@ seed2(reduce_bit(a[16:23],48)); 	seed3(reduce_bit(a[24:31],48));
 
 **算法-1流程图**  
 
-![algo1](https://github.com/binbinErices/Car_CRM_System/blob/master/img/algo1.png)
+![algo1](https://github.com/UlordChain/Document/blob/master/img/algo1.png?raw=true)
 
 
 #### 【算法-2】修改工作存储器内容 
@@ -115,7 +115,7 @@ seed2(reduce_bit(a[16:23],48)); 	seed3(reduce_bit(a[24:31],48));
 
 **算法-2流程图**  
 
-![algo2](https://github.com/binbinErices/Car_CRM_System/blob/master/img/algo2.png)
+![algo2](https://github.com/UlordChain/Document/blob/master/img/algo2.png?raw=true)
 
 
 #### 【算法-3】根据工作存储器内容产生最后结果  
@@ -144,7 +144,7 @@ seed2(reduce_bit(a[16:23],48)); 	seed3(reduce_bit(a[24:31],48));
 
 **算法-3流程图**  
 
-![algo3](https://github.com/binbinErices/Car_CRM_System/blob/master/img/algo3.png)
+![algo3](https://github.com/UlordChain/Document/blob/master/img/algo3.png?raw=true)
 
 
 ### 1.3 算法操作分析  
@@ -354,7 +354,7 @@ CryptoHello(“HelloWorld”)= 8d184a295c91aa46243c64452c0417fcff4d5ea67b30d43dd
 | ServerX | 115 | 443 | 797 | 1186 | 1578 | 2337 | 2208 | 2177 | 2171 |  
 | Embedded System | 73 | 138 | 133 | 133 | 133| 133 | 133 |	132 | 133 |  
 
-![image4](https://github.com/binbinErices/Car_CRM_System/raw/master/img/2-1-2.png?raw=true)  
+![image4](https://github.com/UlordChain/Document/blob/master/img/2-1-2.png?raw=true)  
 
 **图2-1 不同平台上单向函数CryptoHello的性能（单位：每秒的计算次数）**
 
@@ -402,12 +402,12 @@ GPU版本的代码实现中支持以下几个动态调整功能：
 **表2-6 不同GPU上单向函数CryptoHello的性能**  
 （单位：每秒的计算次数，单卡，线程设置为1024）  
 
-![zh_1](https://github.com/binbinErices/Car_CRM_System/blob/master/img/zh_1.png?raw=true)  
+![zh_1](https://github.com/UlordChain/Document/blob/master/img/zh_1.png?raw=true)  
 
 **图2-2 不同GPU上单向函数CryptoHello的性能**  
 
 
-![zh_2](https://github.com/binbinErices/Car_CRM_System/blob/master/img/zh_2.png?raw=true)  
+![zh_2](https://github.com/UlordChain/Document/blob/master/img/zh_2.png?raw=true)  
  
 
 图2-2中，GTX 1080和Titan X的性能接近，而Vega64的性能明显较低。我们认为，这主要是因为我们的算法是存储器带宽受限的，而与核数关系不大。由于在算法-2中的存储器访问基本单位是字节，因此，虽然GPU的显存位宽很高，但是真正有效的数据传输率却非常低。三种GPU的存储器系统相关参数如表2-7所示。  
@@ -451,7 +451,7 @@ GPU版本的代码实现中支持以下几个动态调整功能：
 
 **图3-1 典型ASIC加速芯片的结构** 
 
-![典型ASIC加速芯片的结构](https://github.com/binbinErices/Car_CRM_System/blob/master/img/zh_3.1.png?raw=true)
+![典型ASIC加速芯片的结构](https://github.com/UlordChain/Document/blob/master/img/zh_3.1.png?raw=true)
 
 
 在水平方向上，CPU核负责执行控制流操作。主要包括片内数据缓存中的数据结构组织和调整，以及各个加速运算模块的工作模式的协调和管理。在这种芯片架构中，CPU核没有处于影响整个ASIC加速芯片速度和性能的关键路径上。  
@@ -462,7 +462,7 @@ GPU版本的代码实现中支持以下几个动态调整功能：
 
 **图3-2 采用Memory-Hard算法的ASIC加速芯片结构**  
 
-![Memory-Hard芯片结构](https://github.com/binbinErices/Car_CRM_System/blob/master/img/zh_3.2.png?raw=true)  
+![Memory-Hard芯片结构](https://github.com/UlordChain/Document/blob/master/img/zh_3.2.png?raw=true)  
 
 Memory-Hard改进算法可以有效地降低单芯片中可以集成的加速运算模块的数量，但由于加速运算模块自身的电路规模小（1K至2K门），这样单个ASIC加速芯片的成本可以有效控制，进而可以通过采用多芯片并行工作的方式来提升板级系统整体的算法执行速度。我们需要设计更加有效的ASIC芯片和矿机抑制算法。  
 
@@ -476,7 +476,7 @@ Memory-Hard改进算法可以有效地降低单芯片中可以集成的加速运
 
 **图3-3 采用复杂控制流算法的ASIC加速芯片结构**    
 
-![复杂控制流算法芯片结构](https://github.com/binbinErices/Car_CRM_System/blob/master/img/zh_3.3.png?raw=true)  
+![复杂控制流算法芯片结构](https://github.com/UlordChain/Document/blob/master/img/zh_3.3.png?raw=true)  
 
 ### 3.2 基于ARM处理器核的ASIC方案  
 
