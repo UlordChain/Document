@@ -1,4 +1,4 @@
-![ulord](https://github.com/binbinErices/Car_CRM_System/blob/master/img/ulord.png?raw=true)
+![ulord](https://github.com/UlordChain/Document/raw/master/img/ulord.png?raw=true)
 
  
 **5000 years ago, humans invented characters and started the journey of civilization, hence started distributing knowledge and information;**  
@@ -144,12 +144,12 @@ In short, Ulord is determined to use blockchain technology to create a new gener
 # Architecture of Ulord  
 The modular design of loose coupling is adopted for Ulord in overall design, which encourages more developers to join in the development of the entire ecosystem. Through web interface, desktop application and mobile APP and other forms of display, the application layer publisher can more easily build site, and publish Internet content distribution service of his own. Architecture of Ulord is as shown in Figure 1, which is composed of Ulord platform and Ulord original chain. Ulord is the P2P data service, including data transmission, data distribution, data storage, data index, accounting model, communication model, Gas model and payment system. The original chain of Ulord is blockchain infrastructure, providing accounting, domain name, master node and other services, so as to ensure that the entire backbone of network is stable and orderly.  
 
-![Architecture of Ulord](https://github.com/binbinErices/Car_CRM_System/blob/master/img/figure1.png?raw=true)
+![Architecture of Ulord](https://github.com/UlordChain/Document/raw/master/img/figure1.png?raw=true)
 
 # Ulord platform  
 The platform layer is the middle layer of the system, and plays a role as a bridge between application layer and base layer. The platform layer is categorized as support component and function component according to function. The support component provides functional components with basic function supporting. The platform layer is connected to blockchain of base layer through the functional components, providing the application layer with content distribution, sharing and payment service based on blockchain. The platform layer architecture is shown in Figure 2.  
 
-![Ulord platform](https://github.com/binbinErices/Car_CRM_System/blob/master/img/figure2.png?raw=true)
+![Ulord platform](https://github.com/UlordChain/Document/raw/master/img/figure2.png?raw=true)
 
 The core function of the platform layer is to build a basic network and service environment for content sharing platform. The main functional modules are as follows.  
 
@@ -226,7 +226,7 @@ In order to meet needs of Internet content distribution, the original chain of U
 
 ## Master node system  
 The whole node refers to server or common PC running the full client on the P2P network, which plays a role of spread of transactions and blocks in the blockchain network. To maintain normal operation of all nodes, a large amount of cyber source needs to be consumed, such as storage space and network flow. According to Zap Chain Magazine statistics, the number of all nodes in the bitcoin network shows a decreasing trend, which requires additional 40 seconds for block broadcasting. The community has put forward many solutions, such as the introduction of new award plan of Microsoft Research and the Bitnodes incentive plan, and try to increase the number of nodes, but without good solution.  
-![Master node system](https://github.com/binbinErices/Car_CRM_System/blob/master/img/figure3.png?raw=true)
+![Master node system](https://github.com/UlordChain/Document/raw/master/img/figure3.png?raw=true)
 
 In order to maintain a healthy and stable blockchain backbone network, Dashi puts forward the solution of hierarchical network. Through the introduction of master node system, the stable backbone network can form to solve communication delay. In the system of Dashi, 1000 nodes of dash can be stored and upgraded to the master node. If it can be stable online in a period of time, 45% of income of each block network will be taken. But now, the master node system of Dashi still has many problems in the design and implementation. Firstly, according to the design rules of Dashi, the total number of coin of the whole system is about 17 million, and approximately 8 million have been issued. While the number of the master node is maintained at about 4800. As each master node needs to have 1000 dashes as guarantee, nearly 5 million Dashi coins are locked in master node. The number of circulating Dashi coins in the market is less than 3 million, which is obviously contrary to the initial design theory of bitcoin, and cannot guarantee a sufficient currency circulation in the market. Secondly, in the design of master node, there is no discrimination or considering QoS, and master node service quality is uneven. Therefore the network communication cannot achieve the desired results. Finally, only users with some computer knowledge can build master node, not all people have such a foundation. To entrust the third party often brings the risk to assets, so it is necessary to let more people participate in the maintenance of the master node network. As shown in Figure 3, considering different application scenarios, Ulord makes further improvement and optimization to the master node system as follows:  
 
@@ -250,14 +250,14 @@ Voting system has two major roles on Ulord. The first is to evaluate the plan pr
 In order to promote the healthy development of Ulord ecosystem, Ulord prepares 10% of income for developers of the whole community. Ulord provides unified proposal entrance for community development. The community developers can submit the improvement proposal of Ulord through the entrance. The submitted proposal will be broadcast to Ulord, and sent to users in the form of message. All Ulord users have rights to vote. When the number of a proposal support exceeds a certain threshold value (the current system is set to 30%), the proposal will be approved. Then, the developer submitting the proposal will begin to accept budget system support. For the same proposal, users need to make voting twice. After the first voting, development team will receive budget support, but only 50% of the budget will be provided for developers. Only after developers complete and launch the second voting, the user can receive the remaining 50% of budget support.  
 In concrete implementation, a super block will be automatically generated in every 17000 blocks, and funding for the community developers can be achieved through this block. The number of coinbase coin of super block is the sum of the blocks between the previous super block and the current super block after deducting of 10% of income, then txout is the budget address passing the budget. If the current super block has no budget, the funds will be automatically stored in the pool of funds, which is used for the following plan budget support.  
 
-![figure4](https://github.com/binbinErices/Car_CRM_System/blob/master/img/figure4.png?raw=true)
+![figure4](https://github.com/UlordChain/Document/raw/master/img/figure4.png?raw=true)
 
 ## Smart contract  
 ### Unified domain name mechanism  
 Ulord allows the users to call the API of platform layer to publish their own site service. In order to make Ulord users to get convenient access to other users' resources on the Ulord platform, the readable character string easy to remember can be used as domain name. Before the user releases the resource, by specifying the domain name site, he can apply for the readable domain name easy to remember. But there is a need to bind certain amount of UlordTokens. With the passage of time, the quantity of UlordTokens will be gradually consumed with increasing of block; in other words, all the resources and websites on Ulord will be gradually consumed with the increasing block height. All UlordTokens consumed for applying for a domain name will flow into the underlying network and become a part of the cost of billing.  
 To support the readable domain name system, we introduce a new data structure Domain Claimtrie to store all domain names and the associated information on Ulord. As shown in Figure 5, in Domain Claimtrie, each node corresponds to a domain name, at the same time, each node also holds the node's related transaction information, including a transaction. When the user applies for the domain name, it must be bound with a certain number of UlordTokens; the new domain name is allowed for registration, which is unique in Ulord. The user is supported for cancellation of domain name. After the domain name is cancelled, the domain name is automatically released. To support the integrity of the domain name tree, we modify the block structure of blockchain and adds a field Domain Claimtrie.  
 
-![figure5](https://github.com/binbinErices/Car_CRM_System/blob/master/img/figure5.png?raw=true)
+![figure5](https://github.com/UlordChain/Document/raw/master/img/figure5.png?raw=true)
 
 ### Properties of smart contract  
 Ulord has attribute of smart contract, and introduces the design concept of gas. But Ethernet gas consumes gas in each operation. Compared to the gas concept of Ethernet, Ulord adopts a more simplified and abstract method. The resources and site posted on Ulord by user will consume resources on the Ulord network. Therefore when the user releases resources or site, a certain amount of UlordTokens is needed to bound. With growing of block height, UlordToken will be gradually consumed, and the user needs to recharge the new UlordTokens to the corresponding address to ensure the ownership of domain name. At the same time, through sidechain technology, it can be compatible with Ethernet virtual machine, release smart contract, and allow users to publish their tokens. There is a certain proportion of exchange relationship between tokens and UlordToken. Ulord allows users to customize their releasing of site service, and through the issuance of their tokens, they can operate their own sites.  
@@ -266,7 +266,7 @@ Ulord has attribute of smart contract, and introduces the design concept of gas.
 Ulord combines PoW (Proof of Work) and PoS (Proof of Storage) as the consensus algorithm. Among them, PoW uses the self-designed CryptoHello algorithm. The algorithm uses multiple serial cryptographic primitive operation. With the characteristics of computer architecture, it has the mining characteristics of permanent prevention of ASIC. POS mechanism is to encourage more master nodes to join. By providing more storage space, it brings in revenue for their own, and provides massive distributed storage space for Ulord.  
 ###	PoW implementation mechanism  
 In order to make full use of idle resources for mining, the original chain of Ulord adopts the self-designed CPU algorithm of mining - CryptoHello algorithm. The algorithm is proved to be secure in random model. CryptoHello algorithm is as shown in figure7.  
-![figure7](https://github.com/binbinErices/Car_CRM_System/blob/master/img/figure7.1.png?raw=true)
+![figure7](https://github.com/UlordChain/Document/raw/master/img/figure7.1.png?raw=true)
 
 The input of the algorithm is the Hash value of the last block Mi-1，the block head data TD and Nonce value. Firstly, through a fixed filling algorith, length of Mi-1||TD is integer length of 1600bit. Then the filled messages are grouped according to 1600bit, and they are recorded as N0,N1...,Nt-1, C0=Nonce.  
 
@@ -292,11 +292,11 @@ Ulord uses the most popular privacy protection zk-SNARK technology to protect th
 - c. The transaction input is equal to output.  
 The ledger itself proves the money is not spent out before and does not require sender to do anything. The sender only proves that he is holder of the currency, and hopes to send out the currency in the way of electronic signature through the private key corresponding to address. To make the signature verified, the sender's address must be open. Correspondingly, receiver must publicly accept his address to finish the transaction. In Ulord, it is simple to verify that the input and output of the transaction are equal, because the number of transmission is completely exposed.  
 
-![figure8](https://github.com/binbinErices/Car_CRM_System/blob/master/img/figure8.png?raw=true)
+![figure8](https://github.com/UlordChain/Document/raw/master/img/figure8.png?raw=true)
 
 Zero knowledge proof (specifically, zk-SNARKs) to verify the above three elements can protect privacy of users from revealing, without exposing sender, receiver and transferring amount. Every successful transaction is accompanied with zk-SNARK, and it proves that: the input asset exists, and has not been previously spent. The person who creates the transaction authorizes the transaction cost, and the input number and type are equal to the output number and type. The information for cost output (that is to create a new zk-SNARK) is attached to the transaction. It is encrypted with the public key of payee, and only used for the payee.  
 
-![figure9](https://github.com/binbinErices/Car_CRM_System/blob/master/img/figure9.png?raw=true)
+![figure9](https://github.com/UlordChain/Document/raw/master/img/figure9.png?raw=true)
 
 ### Instant payment  
 With the master node technology, the users can send and receive instant irreversible transaction. Once the instant transaction forms, the input of transaction is locked to the corresponding particular transaction, currently, the locking time of the whole net transaction is about 4 seconds. If a locking consensus is reached in the master node network, all transactions and blocks against it will always be refused, unless they can match the corresponding transaction ID which was locked at that time.  
@@ -327,7 +327,7 @@ Considering long-term design, different application fields may have different to
 
 ## Distribution mechanism  
 
-![figure10](https://github.com/binbinErices/Car_CRM_System/blob/master/img/figure10.png?raw=true)  
+![figure10](https://github.com/UlordChain/Document/raw/master/img/figure10.png?raw=true)  
 
 There are four main roles in the platform:  
 - Copyright author: copyright owner  
@@ -362,7 +362,7 @@ Based on the following considerations:
 Ulord designs two kinds of mining nodes, one is common mining node, namely the enterprise/family computer or other equipment. The computer software mining client will be issued without need to spend money to add other equipment to become the account recording node of Ulord to participate in mining after software installation. The mining is divided into the intelligent mining, full speed mining and other mode, so that the home and office computer can be used for more purposes. It can not only meet entertainment needs, but also share resources to earn UlordToken. The other is the professional mining node, which has been mentioned in the original chain design. Mining algorithm is only designed for CPU mining, so we provide professional mining equipment which is different from the currently available GPU mining rig and ASIC mining rig and specific for Ulord accounting. The equipment may be the cloud host of the cloud computing center.   
 This mining model is actually optimization of technological innovation resources through scheduling, which reduces social resources consumption, transforms waste into treasure, and is friendly to environment; from the perspective of content distribution and dissemination, UlordToken can be obtained both from sharing of valuable contents and mining.  
 
-![figure11](https://github.com/binbinErices/Car_CRM_System/blob/master/img/figure11.png?raw=true)
+![figure11](https://github.com/UlordChain/Document/raw/master/img/figure11.png?raw=true)
 
 - **Spread**   
 Only when the spread and using frequency of copyright work is increased, the value of work is likely to rise; the digital content used by no one has no value. In the Internet era, everyone is a content disseminator, and has right to express any ideas of to comment, distribute or reproduce contents; the time and energy paid on them can also be rewarded on Ulord. Therefore, provision and dissemination of high-quality content are encouraged.  
