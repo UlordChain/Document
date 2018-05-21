@@ -1,4 +1,4 @@
-![ulord](https://github.com/UlordChain/Document/raw/master/img/ulord.png?raw=true)
+![ulord](https://github.com/UlordChain/Document/blob/master/Technicalwhitepapercover.png)
 
  
 **5000 years ago, humans invented characters and started the journey of civilization, hence started distributing knowledge and information;**  
