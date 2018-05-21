@@ -265,8 +265,8 @@ Ulord has attribute of smart contract, and introduces the design concept of gas.
 ## Consensus algorithm  
 Ulord combines PoW (Proof of Work) and PoS (Proof of Storage) as the consensus algorithm. Among them, PoW uses the self-designed CryptoHello algorithm. The algorithm uses multiple serial cryptographic primitive operation. With the characteristics of computer architecture, it has the mining characteristics of permanent prevention of ASIC. POS mechanism is to encourage more master nodes to join. By providing more storage space, it brings in revenue for their own, and provides massive distributed storage space for Ulord.  
 ###	PoW implementation mechanism  
-In order to make full use of idle resources for mining, the original chain of Ulord adopts the self-designed CPU algorithm of mining - CryptoHello algorithm. The algorithm is proved to be secure in random model. CryptoHello algorithm is as shown in figure7.  
-![figure7](https://github.com/UlordChain/Document/raw/master/img/figure7.1.png?raw=true)
+In order to make full use of idle resources for mining, the original chain of Ulord adopts the self-designed CPU algorithm of mining - CryptoHello algorithm. The algorithm is proved to be secure in random model. CryptoHello algorithm is as shown in figure8.  
+![figure8](https://github.com/UlordChain/Document/blob/master/Figure%208.png)
 
 The input of the algorithm is the Hash value of the last block Mi-1，the block head data TD and Nonce value. Firstly, through a fixed filling algorith, length of Mi-1||TD is integer length of 1600bit. Then the filled messages are grouped according to 1600bit, and they are recorded as N0,N1...,Nt-1, C0=Nonce.  
 
