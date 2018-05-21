@@ -296,7 +296,7 @@ The ledger itself proves the money is not spent out before and does not require 
 
 Zero knowledge proof (specifically, zk-SNARKs) to verify the above three elements can protect privacy of users from revealing, without exposing sender, receiver and transferring amount. Every successful transaction is accompanied with zk-SNARK, and it proves that: the input asset exists, and has not been previously spent. The person who creates the transaction authorizes the transaction cost, and the input number and type are equal to the output number and type. The information for cost output (that is to create a new zk-SNARK) is attached to the transaction. It is encrypted with the public key of payee, and only used for the payee.  
 
-![figure9](https://github.com/UlordChain/Document/raw/master/img/figure9.png?raw=true)
+![figure9](https://github.com/UlordChain/Document/blob/master/Fig%2011.png)
 
 ### Instant payment  
 With the master node technology, the users can send and receive instant irreversible transaction. Once the instant transaction forms, the input of transaction is locked to the corresponding particular transaction, currently, the locking time of the whole net transaction is about 4 seconds. If a locking consensus is reached in the master node network, all transactions and blocks against it will always be refused, unless they can match the corresponding transaction ID which was locked at that time.  
@@ -327,7 +327,7 @@ Considering long-term design, different application fields may have different to
 
 ## Distribution mechanism  
 
-![figure10](https://github.com/UlordChain/Document/raw/master/img/figure10.png?raw=true)  
+![figure10](https://github.com/UlordChain/Document/blob/master/Fig%2012.png)  
 
 There are four main roles in the platform:  
 - Copyright author: copyright owner  
