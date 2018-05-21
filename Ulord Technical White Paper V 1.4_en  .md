@@ -292,7 +292,7 @@ Ulord uses the most popular privacy protection zk-SNARK technology to protect th
 - c. The transaction input is equal to output.  
 The ledger itself proves the money is not spent out before and does not require sender to do anything. The sender only proves that he is holder of the currency, and hopes to send out the currency in the way of electronic signature through the private key corresponding to address. To make the signature verified, the sender's address must be open. Correspondingly, receiver must publicly accept his address to finish the transaction. In Ulord, it is simple to verify that the input and output of the transaction are equal, because the number of transmission is completely exposed.  
 
-![figure8](https://github.com/UlordChain/Document/raw/master/img/figure8.png?raw=true)
+![figure8](https://github.com/UlordChain/Document/blob/master/Fig%2010.png)
 
 Zero knowledge proof (specifically, zk-SNARKs) to verify the above three elements can protect privacy of users from revealing, without exposing sender, receiver and transferring amount. Every successful transaction is accompanied with zk-SNARK, and it proves that: the input asset exists, and has not been previously spent. The person who creates the transaction authorizes the transaction cost, and the input number and type are equal to the output number and type. The information for cost output (that is to create a new zk-SNARK) is attached to the transaction. It is encrypted with the public key of payee, and only used for the payee.  
 
