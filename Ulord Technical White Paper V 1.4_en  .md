@@ -149,7 +149,7 @@ The modular design of loose coupling is adopted for Ulord in overall design, whi
 # Ulord platform  
 The platform layer is the middle layer of the system, and plays a role as a bridge between application layer and base layer. The platform layer is categorized as support component and function component according to function. The support component provides functional components with basic function supporting. The platform layer is connected to blockchain of base layer through the functional components, providing the application layer with content distribution, sharing and payment service based on blockchain. The platform layer architecture is shown in Figure 2.  
 
-![Ulord platform](https://github.com/UlordChain/Document/raw/master/img/figure2.png?raw=true)
+![Ulord platform](https://github.com/UlordChain/Document/blob/master/Figure%202.png)
 
 The core function of the platform layer is to build a basic network and service environment for content sharing platform. The main functional modules are as follows.  
 
