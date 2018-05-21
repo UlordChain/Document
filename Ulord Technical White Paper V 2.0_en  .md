@@ -24,19 +24,25 @@ Today, we have Ulord, making knowledge distribution a reality...**
   - [AI service module](#ai-service-module)  
 - [Ulord original chain](#ulord-original-chain)  
   - [Master node system](#master-node-system)  
+  - [Sidechain](#sidechain)  
   - [Voting system](#voting-system)  
   - [Budget system](#budget-system)  
   - [Smart contract](#smart-contract)  
-  - [Consensus algorithm](#consensus-algorithm)  
+    - [Unified domain name mechanism](#unified-domain-name-mechanism)  
+    - [Properties of smart contract](#properties-of-smart-contract)  
+  - [Consensus algorithm](#consensus-algorithm)     
+    - [PoW implementation mechanism](#pow-implementation-mechanism)  
+    - [PoS implementation mechanism](#pos-implementation-mechanism)  
+  - [Others](#others)     
+    - [Privacy protection](#privacy-protection)  
+    - [Instant payment](#instant-payment)   
 - [Application design and framework implementation](#application-design-and-framework-implementation)  
   - [Main characteristics](#main-characteristics)  
   - [Distribution mechanism](#distribution-mechanism)  
   - [UlordToken allocation scheme](#ulordtoken-allocation-scheme)  
   - [How to get UlordToken](#how-to-get-ulordtoken)  
 - [Ulord Team](#ulord-team)  
-  - [Core Team](#core-team)  
-  - [Advisers](#advisers)  
-  - [Investment agency](#investment-agency)  
+  - [Core Technology Team](#core-technology-team)  
 - [Project promotion plan](#project-promotion-plan)  
 - [Summary](#summary)  
 - [Disclaimer](#disclaimer)  
@@ -418,23 +424,41 @@ Ulord team brings together a large number of high-level R & D personnel led by m
 Ulord team brings together a large number of high-level R & D personnel led by more than 10 PhDs, with comprehensive blockchain technology application development capabilities. More than 50 excellent programmers and algorithm engineers in the technology development team have backgrounds in areas such as blockchain, cryptography, Internet information security, big data, cloud computing, artificial intelligence, finance, and management. There are senior scientists in cryptography and blockchain, and specialized blockchain project investors. In addition, Ulord team also maintains close cooperation with research institutes such as Windsor University in Canada, Manchester University in the UK, Wuhan University, Beihang University and Chinese Academy of Sciences to jointly develop key technologies in Ulord platform.  
 
 **Dam Woods**   CEO, PhD，over the past decade he has been committed in research and development of cloud computing, and has a rich experience in leading technical team to explore major projects. He once served as a director of a huge cloud computing center and has unique insights in the blockchain industry.  
+
 **Kwuaint Li**   CTO，PhD，a reliable Chinese programmer. He once worked in Nortel Networks as SME, and devotes himself to researching and promoting blockchain technology. Under the control of blockchain technical risks, he dreames he would bring the technology dividend to the public.  
+
 **Cyber Kuber**   CMO, PhD, one of the earliest investors in blockchain and masters blockchain technology and operation. He thinks blockchain will lead people to develop more sophisticated society and Ulord will show its true value in this process.  
+
 **Yang Zheng**   PhD, visiting scholar of University of Nottingham, has deep research in computer vision, machine learning, and other fields. He has participated in many national science and technology key projects on digital media content analysis, cross-media content retrieval, and video big data analysis as well as participated in multiple blockchain projects.  
-**Christine Chern**   PhD, mainly engages in artificial intelligence, data mining, network security, blockchain. As one of the earliest domestic scholars engaging in social network research, he is the main founder of the social network open source community with 8 national invention patents.                             
+
+**Christine Chern**   PhD, mainly engages in artificial intelligence, data mining, network security, blockchain. As one of the earliest domestic scholars engaging in social network research, he is the main founder of the social network open source community with 8 national invention patents.     
+
 **Yan Xiangtao**  PhD, visiting scholar at the University of Denver in the United States. He has participated and completed 5 items of the national science and technology projects, presided over 3 research project and published more than 30 research papers. He is experienced in project justification, technology development, and management coordination.  
+
 **Laktic Lattie**  PhD of Computer Science and Technology, graduated from Computer College Wuhan University. He has deep foundation in big data mining, distributed storage technology and other areas, involving in multiple blockchain project researches and developments, and hosts 5 invention patents.  
+
 **Cui Lin**  PhD, participates in the design and development of large-scale distributed systems. He has deep research and rich practice in cloud computing and artificial intelligence.  
+
 **Zhang Min**  PhD of 6th University, Paris, France, mainly engages in natural language processing and machine learning related algorithms research, is familiar with all kinds of intelligent parallel acceleration and optimization algorithms and has rich practical experience in distributed system fault modeling, user behavior analysis and content recommendation.  
+
 **Li Fu**  PhD, engages in encryption algorithms, information security direction research and implementation.  
+
 **Li Mai**   PhD, graduated from University of Windsor, Canada, visiting scholar at McGill University. He has long been engaged in intelligent optimization algorithm design, blockchain and other related research.  
+
 **Liang Liang**  PhD, has conducted deep research on system evaluation and optimization methods, complex system modeling and blockchain finance, and gained rich experience in system software design and development.  
+
 **Teh Sunn Liu**  Master, core algorithm engineer from India, has extensive experience in the development of blockchain underlying technologies.  
+
 **Jiang Zaile**  Master, former Ant Financial software engineer. He once participated in multiple national key scientific and technological projects, as well as developed applications loading millions of users. He has rich experience and accumulation in operating system underlying drivers and high-concurrency applications.  
+
 **Yeou Sunn Liu**  Master, software development engineer from India, Microsoft Certified Technical Expert, has extensive experience in software development.  
+
 **Yin Haibo**  Master, has many years of experience in computer engineering, software system architecture, distributed systems and blockchain. The large-scale software systems led by him in R&D operate steadily in telecommunication and industry area. The Internet products led by him in R&D have been highly praised by customers and learned by peers in the industry.  
+
 **Su Mingrui**   Master, has participated in a research project of one Academy of Military Sciences. His research areas include machine learning and data mining. He has more than five years of experience in c++ software development, and is proficient in front-end design and front and back-end interaction.  
+
 **Liu Xiu**   Master, has rich experience in Windows and Linux programming. He once worked in the robot field for many years, masters blockchain underlying technology development, and deeply understands the technical details of various public blockchains. He is mainly engaged in the development and implementation of cross-chain transaction technology.  
+
 **Liang Qi**   master, software designer, has participated in many national key military projects, and is good at blockchain underlying technology development.  
 
 In addition to the above backbones, there are Li Wenzhou, Zhou Kaiyuan, Zhong Yunhua, Qu Pengcheng, Hu Biao, Liu Qiping, Liu Bicheng, Yang Chang, Guo Lei, Liu Chunjie, Chen Xiaojing, Nie Lang, Hu Qingping, Zeng Xuedong, Chen Jian, He Jin, Shu Xudong, Guo Taibiao, He Tao, Cao Linan, Zou Zhenan, Quan Songlin, Luo Xi, Chen Yunying, Zhang Lv, Chen Qian, Tan Ke, Zeng Xiaoeng, Xu Huixiang, Ye Qiang, Zeng Xuedong, Xiao Chunyu, Guo Lei, Zheng Tingting, Fan Ye, Tian Dan, Yang Zixiong, Huang Mingliang, Song Yi, Tan Xian and other programmers and algorithm engineers involved in Ulord project research and development. They are convinced that the blockchain will bring a new era, and willing to join this technological change.  
