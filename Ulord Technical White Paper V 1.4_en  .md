@@ -403,20 +403,6 @@ Ulord team brings together a large number of high-level R & D personnel led by m
 **Teh Sunn Liu**, PhD, core algorithm engineer, comes from Chhattisgarh, India. He loves encryption algorithms as much as mountain climbing.  
 In addition to the above backbones, there are Li Wenzhou, Zhou Kaiyuan, Zhong Yunhua, Qu Pengcheng, Liu Xiu, Hu Biao, Liu Qi Ping, Liu Bicheng, Su Mingrui, Yang Chang, Guo Lei, Liu Chunjie, Chen Xiaojing, Nie Lang, Hu Qingping, Zeng Xuedong, Chen Jian, He Jin, Wang Lu, Shu Xudong, Guo Taibiao, He Tao, Quan Songlin, Cao Linan, Zou Zhenan, Luo Xi, Chen Yunying, Peng Libiao, Yin Haibo, Peng can, Zhang Lv, He Chao, Liu Yang, Chen Qian, Tan Ke, etc., involved in research and development. They are convinced that the blockchain will bring a new era, and willing to join this technological change.  
 
-## Advisers  
-**Chris Wood**, served as an associate professor of computer science and software engineering at a university in Australia, senior researcher and research director, Department of Computer Science and Mathematics, a University in Spain. He is now a top university professor and doctoral tutor in China. His research includes cloud computing security, big data security and privacy, blockchain and digital currency, emerging information systems security and application cryptography.  
-**Yu Yong**, Professor, School of Computer Science, Shaanxi Normal University, PhD tutor , professor of Shaanxi Provincial Hundred Talents Program, member of China Cryptography Society Youth Working Committee, China Cryptology Association Working Committee, China Confidentiality Association Privacy Protection Committee. His research includes public key cryptography and applications, blockchain and cryptocurrency, cloud computing security, big data security and privacy protection.  
-**Zhang Xiaoming**, PhD of Computer Science and Technology, former member of "High Performance Computing" Innovation Team of National Defense Science and Technology University, now serve as chief architect of Hunan Great Wall Galaxy Science and Technology Co., Ltd. He was former deputy chief designer of "Tianhe" series supercomputer computing and processing system in China.  
-**Chen Wenhua**, PhD, University of Alberta, Canada. He has a solid foundation in evolutionary computing, machine learning, big data and other related fields. He served as chair in the intelligent optimization mainstream conferences WCCI, CEC, SSCI and many other organized thematic meetings. He is currently a reviewer for over 10 internationally renowned journals including IEEE TEVC, IEEE TCYB, Information Sciences, Applied Soft Computing.  
-**Jack Yi**, LD Capital Founder, a well-known investor in Blockchain, invested in Tianhe Guoyun, Chafta Technology, Guangdong Hulubao Co. Ltd., Jiwei Co. Ltd., 31 Meeting Co. Ltd., Qtum, DEW, Ven, Big1, BeeChat, Mixin, Zcash, EOS, TAMC, AELF, UChain, etc.  
-**Feng Tao**, PhD of mathematics, Toronto University. He is currently the founder, president and managing partner of Shanghai Yongxuan Venture Capital Management Co., Ltd. He has been selected as one of "Fortune" global 25 corporate new stars. On December 15, 2009, he was named as "2009 Forbes China's best venture capital investors" by "Forbes" Chinese magazine, and ranked fourth.  
-**Cao Wei**, joined Bluerun Beijing Office in November 2010 and currently serves as investment director. His main interests include the Internet community, games, e-commerce and wireless applications.  
-**Liu Feng**, FGB partner.  
-**Wu Gang**，Bixin CEO.  
-
-## Investment agency  
-Tong Dao Uncle, TOPCODE CAPTIAL, DFund, Node Captial, Chain Funder, Link Captail, Jiuding Lab, Hillhouse Captail, Youling Captial, LD Captail, Sparking Star Captail, 007No Quitters, Bixin, Vernacular blockchain.  
-
 # Project promotion plan  
 Q4 2016   Start the journey of Ulord ecological construction  
 Q2 2017   Achieve the key technology research for public blockchain  
