@@ -144,7 +144,7 @@ In short, Ulord is determined to use blockchain technology to create a new gener
 # Architecture of Ulord  
 The modular design of loose coupling is adopted for Ulord in overall design, which encourages more developers to join in the development of the entire ecosystem. Through web interface, desktop application and mobile APP and other forms of display, the application layer publisher can more easily build site, and publish Internet content distribution service of his own. Architecture of Ulord is as shown in Figure 1, which is composed of Ulord platform and Ulord original chain. Ulord is the P2P data service, including data transmission, data distribution, data storage, data index, accounting model, communication model, Gas model and payment system. The original chain of Ulord is blockchain infrastructure, providing accounting, domain name, master node and other services, so as to ensure that the entire backbone of network is stable and orderly.  
 
-![Architecture of Ulord](https://github.com/UlordChain/Document/raw/master/img/figure1.png?raw=true)
+![Architecture of Ulord](https://github.com/UlordChain/Document/blob/master/Figure%201.png)
 
 # Ulord platform  
 The platform layer is the middle layer of the system, and plays a role as a bridge between application layer and base layer. The platform layer is categorized as support component and function component according to function. The support component provides functional components with basic function supporting. The platform layer is connected to blockchain of base layer through the functional components, providing the application layer with content distribution, sharing and payment service based on blockchain. The platform layer architecture is shown in Figure 2.  
