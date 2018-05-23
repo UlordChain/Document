@@ -20,3 +20,7 @@
  It can integrate knowledge structure characteristics, the theme features, semantic features, etc., to realize smart push to different users according to user data and behavioral data.
 ## Efficient Value Sharing Mechanism
  It establishes the value transmission chain for content distribution, and by benefit distribution mechanism, encourages users to actively participate to form a good ecology featuring valuable content contribution and active spread.
+
+
+### Ulord Technical Features  
+#### Multi-sidechain technology  Ulord uses multi-sidechain technology to make digital assets transferred between different chains and Ulord's transaction performance, security and privacy have all been improved. Multi-sidechain technology makes Ulord easily intergrate the latest blockchain technology. Sidechain can also issue their own Token and freely combine smart contracts, micro-payments and other functions.
