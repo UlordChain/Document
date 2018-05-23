@@ -276,7 +276,7 @@ Voting system has two major roles on Ulord. The first is to evaluate the plan pr
 In order to promote the healthy development of Ulord ecosystem, Ulord prepares 10% of income for developers of the whole community. Ulord provides unified proposal entrance for community development. The community developers can submit the improvement proposal of Ulord through the entrance. The submitted proposal will be broadcast to Ulord, and sent to users in the form of message. All Ulord users have rights to vote. When the number of a proposal support exceeds a certain threshold value (the current system is set to 30%), the proposal will be approved. Then, the developer submitting the proposal will begin to accept budget system support. For the same proposal, users need to make voting twice. After the first voting, development team will receive budget support, but only 50% of the budget will be provided for developers. Only after developers complete and launch the second voting, the user can receive the remaining 50% of budget support.  
 In concrete implementation, a super block will be automatically generated in every 17000 blocks, and funding for the community developers can be achieved through this block. The number of coinbase coin of super block is the sum of the blocks between the previous super block and the current super block after deducting of 10% of income, then txout is the budget address passing the budget. If the current super block has no budget, the funds will be automatically stored in the pool of funds, which is used for the following plan budget support.  
 
-![figure4](https://github.com/UlordChain/Document/blob/master/img/Figure%205.png)
+![figure4](https://github.com/UlordChain/Document/blob/master/img/Figure%205.5%20.png)
 
 ## Smart contract  
 ### Unified domain name mechanism  
@@ -359,7 +359,7 @@ Considering long-term design, different application fields may have different to
 
 ## Distribution mechanism  
 
-![figure10](https://github.com/UlordChain/Document/blob/master/img/Fig%2012.png)  
+![figure10](https://github.com/UlordChain/Document/blob/master/img/FIG%2012%20.2.png)  
 
 There are four main roles in the platform:  
 - Copyright author: copyright owner  
