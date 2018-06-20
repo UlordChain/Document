@@ -501,7 +501,7 @@ Ulord Foundation reserves the final interpretation of this white technical paper
 13. Kalodner H, Goldfeder S, Chator A, et al. BlockSci: Design and applications of a blockchain analysis platform[J]. arXiv preprint arXiv:1709.02489, 2017.  
 14. Zeilinger M. Digital art as “monetised graphics”: Enforcing intellectual property on the blockchain[J]. Philosophy & Technology, 2016: 1-27.  
 15. Mastering Bitcoin. https://github.com/bitcoinbook/bitcoinbook.  
-16. Mastering Ethereum. https://github.com/ethereumbook/ethereum book.  
+16. Mastering Ethereum. https://github.com/ethereumbook/ethereumbook.  
 
 
 
