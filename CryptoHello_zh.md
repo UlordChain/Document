@@ -1,5 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 # CryptoHello工作量证明方案  
 
 本项目的目标是设计一种在CPU上可以较为高效工作，但是在GPU、FPGA、ASIC上却难以高效事先的工作量证明方案。即设计一个单向函数CryptoHello，满足y=CryptoHello(x)。CryptoHello应满足的要求类似于散列函数，即单向性、雪崩性、随机性，其计算效率在CPU上较高，但是在GPU、FPGA、ASIC上难以发挥出性能。  
@@ -38,7 +36,7 @@
 
 **【定义1】** 单向函数族hi，0≤i≤15，共计16种不同的单向函数。每个单向函数的输入固定为256位（h0的输入可以是任意长度），输出固定为256位。   
 **【定义2】** 工作存储器M，总容量为|M|字节，|M|能被32整除，目前设置在为1M。  
-**【定义3】** 伪随机函数发生器seed(uint48 s)为设置随机数发生器种子，rand()为随机数发生器结果，返回48位无符号整数。该函数满足Xn+1 = (aXn + c) mod m,  n ≥0，其中m =$$2^{48}$$，a =25214903917, c = 11（glibc的rand48()线性同余伪随机数发生器)  
+**【定义3】** 伪随机函数发生器seed(uint48 s)为设置随机数发生器种子，rand()为随机数发生器结果，返回48位无符号整数。该函数满足Xn+1 = (aXn + c) mod m,  n ≥0，其中m =<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>$$2^{48}$$，a =25214903917, c = 11（glibc的rand48()线性同余伪随机数发生器)  
 **【定义4】** 单向函数y=CryptoHello(x)，其中y为256位。  
 **【定义5】** reduce_bit(x, y)将x的内容规约到y位。设x的位数为l，应满足l≥y。将x的长度补零扩展到y的整数倍，得到长度为L的二进制串X，然后再将X分为L/y段长度为y的段，将这L/y段内容异或得到最终结果。  
 **【定义6】** RRS(x, y)将x循环右移y位。  
