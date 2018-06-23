@@ -1,6 +1,6 @@
 # CryptoHello工作量证明方案  
 
-本项目的目标是设计一种在CPU上可以较为高效的工作量证明方案，该方案可以有效确保在GPU、FPGA、ASIC上难以同样的效率执行。创造性地设计单向函数$ryptoHello$，满足$y=CryptoHello(x)$。$CryptoHello$满足散列函数应有的特性，即单向性、雪崩性、随机性，其计算效率在CPU上较高，但是在GPU、FPGA、ASIC上难以发挥出性能。  
+本项目的目标是设计一种在CPU上可以较为高效的工作量证明方案，该方案可以有效确保在GPU、FPGA、ASIC上难以同样的效率执行。创造性地设计单向函数$CryptoHello$，满足$y=CryptoHello(x)$。$CryptoHello$满足散列函数应有的特性，即单向性、雪崩性、随机性，其计算效率在CPU上较高，但是在GPU、FPGA、ASIC上难以发挥出性能。  
 
 # 目 录  
 
