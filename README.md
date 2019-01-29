@@ -1,6 +1,6 @@
 ### Ulord Technical Features  
 #### Multi-sidechain technology  
-Ulord uses multi-sidechain technology to make digital assets transferred between different chains and Ulord's transaction performance, security and privacy have all been improved. Multi-sidechain technology makes Ulord easily intergrate the latest blockchain technology. Sidechain can also issue their own Token and freely combine smart contracts, micro-payments and other functions.
+By multi-sidechain technology, we can make digital assets transfering between different chains, and the Ulord's transaction performance, security and privacy have all been improved. Multi-sidechain technology makes Ulord easily intergrate the latest blockchain technology. Sidechain can also issue their own Token and freely combine smart contracts, micro-payments and other functions.
 #### Mixed consensus mechanism  
 Ulord uses the mixed consensus mechanism of PoW and PoS. PoW is a CPU wide algorithm for anti-professional mining rigs. Users who provide storage and bandwidth for Ulord will receive rewards from PoS.   
 #### Master node system  
