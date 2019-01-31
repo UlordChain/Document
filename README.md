@@ -2,7 +2,7 @@
 #### Multi-sidechain technology  
 By multi-sidechain technology, we can make digital assets transfering between different chains, and the Ulord's transaction performance, security and privacy have all been improved. Multi-sidechain technology makes Ulord easily intergrate the latest blockchain technology. Sidechain can also issue their own Token and freely combine smart contracts, micro-payments and other functions.
 #### Mixed consensus mechanism  
-Ulord uses the mixed consensus mechanism of PoW and PoS. PoW is a CPU wide algorithm for anti-professional mining rigs. Users who provide storage and bandwidth for Ulord will receive rewards from PoS.   
+Ulord uses the mixed consensus mechanism of PoW and PoS. PoW is a CPU wide algorithm for anti-risc mining rigs. Users who provide storage and bandwidth for Ulord will receive rewards from PoS.   
 #### Master node system  
 Master node system helps to ensure the network stability. Master node users can vote on the teams and projects participating in Ulord ecological construction. They can review the content on Ulord and promote the orderly development of Ulord ecological health. The master node is also the infrastructure for decentralized storage networks.  
 #### Decentralized storage system  
