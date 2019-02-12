@@ -15,5 +15,4 @@ Ulord pushes the comprehensive knowledge structure features, theme features, and
 Ulord uses the voting mechanism and the AI content intelligence verification mechanism to calculate, analyze and filter content originality, sensitivity and quality.  
 ####  Instant payment  
 Through the master node system, Ulord can support more than 4000 transactions per second to meet the demand of practical application better.  
-####  InterPlanetary Domain Name System（IPDNS）
-Ulord provides users with a decentralized domain name analysis service by constructing InterPlanetary Domain Name System. The domain name is easy to remember and convenient to use.
+
